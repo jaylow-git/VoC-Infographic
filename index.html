@@ -94,6 +94,7 @@
   .stack-legend{display:flex;gap:26px;flex-wrap:wrap;margin-top:14px;font-size:14px;color:var(--ink-2);}
   .stack-legend .key{display:inline-flex;align-items:center;gap:7px;}
   .stack-legend .key b{color:var(--ink);}
+  .stack-legend .k-vol{font-size:12px;color:var(--ink-3);}
   .callout{
     display:flex;gap:24px;align-items:flex-start;flex-wrap:wrap;
     background:var(--page);border-radius:12px;padding:22px 26px;margin-top:24px;
@@ -307,18 +308,19 @@
         data-tip="<b>No agent contact</b><br>55.0% of conversations">55.0%</div>
     </div>
     <div class="stack-legend">
-      <span class="key"><span class="swatch box" style="background:#4D4D4D"></span>Reached an agent queue <b>39.2%</b></span>
-      <span class="key"><span class="swatch box" style="background:#9DBAFF"></span>Deflected to the O2 app <b>5.9%</b></span>
-      <span class="key"><span class="swatch box" style="background:#DCDCDC"></span>No agent contact <b>55.0%</b></span>
+      <span class="key"><span class="swatch box" style="background:#4D4D4D"></span>Reached an agent queue <b>39.2%</b> <span class="k-vol">(2,857,656)</span></span>
+      <span class="key"><span class="swatch box" style="background:#9DBAFF"></span>Deflected to the O2 app <b>5.9%</b> <span class="k-vol">(427,769)</span></span>
+      <span class="key"><span class="swatch box" style="background:#DCDCDC"></span>No agent contact <b>55.0%</b> <span class="k-vol">(4,007,753)</span></span>
     </div>
     <div class="callout">
       <div>
         <span class="c-num">57.6%</span>
         <span class="c-numlab">asked for an agent</span>
+        <span class="c-numlab">4,199,499 conversations</span>
       </div>
-      <p><b>57.6%</b> of conversations asked for an agent, but only <b>39.2%</b> reached a queue. Around <b>1.3 million</b> conversations wanted a human and never got one, either deflected to the app, given up, or out of hours.</p>
+      <p><b>57.6%</b> of conversations (4,199,499) asked for an agent, but only <b>39.2%</b> (2,857,656) reached a queue. That leaves <b>1,341,843</b> conversations that wanted a human and never got one, either deflected to the app, given up, or out of hours.</p>
     </div>
-    <p class="sec-caption">Based on 7.3 million VA conversations, Jan to Jun 2026, including conversations without an L1 tag. This is a record-tag view, a different measurement population from the NLU-based 27.9% containment figure, so the two are not directly comparable.</p>
+    <p class="sec-caption">Based on 7,293,178 VA conversations, Jan to Jun 2026, including conversations without an L1 tag. This is a record-tag view, a different measurement population from the NLU-based 27.9% containment figure, so the two are not directly comparable.</p>
   </section>
 
   <!-- 4. VM FAULTS CASE STUDY -->
