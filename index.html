@@ -50,7 +50,7 @@
     color:var(--ink-3);margin-bottom:4px;
   }
   h2{font-size:24px;font-weight:bold;line-height:1.2;}
-  .lede{font-size:16px;color:var(--ink-2);margin-top:6px;max-width:72ch;}
+  .lede{font-size:16px;color:var(--ink-2);margin-top:6px;}
   .lede strong{color:var(--ink);}
 
   /* Hero KPI band */
@@ -79,7 +79,7 @@
   .vol-fig .v-word{font-size:19px;font-weight:bold;}
   .vol-fig .v-lab{display:block;font-size:13px;color:var(--ink-3);margin-top:5px;}
   .v-of{font-size:19px;font-weight:bold;color:var(--ink-3);}
-  .hero-foot{font-size:13px;color:var(--ink-3);margin-top:16px;max-width:90ch;}
+  .hero-foot{font-size:13px;color:var(--ink-3);margin-top:16px;}
   .hero-foot + .hero-foot{margin-top:6px;}
   .lede.support{font-size:14px;margin-top:10px;}
 
@@ -100,9 +100,9 @@
   }
   .callout .c-num{font-size:52px;font-weight:bold;line-height:1;letter-spacing:-0.02em;}
   .callout .c-numlab{display:block;font-size:13px;color:var(--ink-3);margin-top:5px;}
-  .callout p{flex:1 1 320px;font-size:15px;color:var(--ink-2);max-width:62ch;}
+  .callout p{flex:1 1 320px;font-size:15px;color:var(--ink-2);}
   .callout p b{color:var(--ink);}
-  .sec-caption{font-size:13px;color:var(--ink-3);margin-top:16px;max-width:95ch;}
+  .sec-caption{font-size:13px;color:var(--ink-3);margin-top:16px;}
   .brandmark{display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:6px;vertical-align:baseline;}
   .bm-o2{background:var(--o2-blue);}
   .bm-vm{background:var(--vm-red);}
@@ -143,7 +143,7 @@
   .trust-flex{display:flex;gap:28px;align-items:flex-start;flex-wrap:wrap;margin-top:6px;}
   .trust-chart{flex:1 1 460px;min-width:320px;}
   .trust-read{flex:1 1 260px;min-width:240px;font-size:15px;color:var(--ink-2);padding-top:26px;}
-  .trust-read p{margin-bottom:12px;max-width:46ch;}
+  .trust-read p{margin-bottom:12px;}
   .trust-read b{color:var(--ink);}
 
   /* Next steps */
@@ -241,12 +241,12 @@
     <div class="vol-band">
       <div class="vol-fig">
         <span class="v-top"><span class="v-num">1,309,243</span><span class="v-word">contained</span></span>
-        <span class="v-lab">Handled end to end, no agent</span>
+        <span class="v-lab">Conversations where users did not request to speak to an agent</span>
       </div>
       <div class="v-of">of</div>
       <div class="vol-fig">
         <span class="v-top"><span class="v-num">4,697,782</span><span class="v-word">conversations</span></span>
-        <span class="v-lab">H1 2026, measured VA demand</span>
+        <span class="v-lab">H1 2026, Conversations that were classified by the NLU</span>
       </div>
     </div>
     <div class="hero-grid">
@@ -274,11 +274,30 @@
     <p class="hero-foot">Containment here is measured on NLU-recognised conversations. Alternative views based on record tags and journey footfall use broader populations and produce higher headline rates. Full detail is available in the monthly containment pack.</p>
   </section>
 
-  <!-- 2. WHAT ACTUALLY HAPPENED TO DEMAND -->
+  <!-- 2. MONTHLY TREND -->
+  <section class="card" id="sec-monthly">
+    <p class="kicker">Monthly trend</p>
+    <h2>Containment by brand, January to June</h2>
+    <p class="lede">O2 rose every month to <strong>26.1%</strong>. Virgin Media peaked at <strong>32.7%</strong> in April, then slipped back.</p>
+    <div class="legend">
+      <span class="key"><span class="swatch" style="background:var(--o2-blue)"></span>O2</span>
+      <span class="key"><span class="swatch" style="background:var(--vm-red)"></span>Virgin Media</span>
+    </div>
+    <div class="chart" id="chart-monthly"></div>
+    <details class="data">
+      <summary>View data table</summary>
+      <table>
+        <thead><tr><th>Month</th><th>O2 %</th><th>VM %</th></tr></thead>
+        <tbody id="tbl-monthly"></tbody>
+      </table>
+    </details>
+  </section>
+
+  <!-- 3. WHAT ACTUALLY HAPPENED TO DEMAND -->
   <section class="card" id="sec-outcomes">
     <p class="kicker">Outcome view</p>
     <h2>What actually happened to demand</h2>
-    <p class="lede">Containment says what we resolved. This shows where conversations ended up.</p>
+    <p class="lede">Containment says what we resolved. This shows where conversations ended up - includes users who were not classified by the NLU.</p>
     <div class="stack-bar" role="img" aria-label="Stacked bar of H1 outcome shares: reached an agent queue 39.2%, deflected to the O2 app 5.9%, no agent contact 55.0%">
       <div class="seg" style="flex-basis:39.2%;background:#4D4D4D;color:#FFFFFF"
         data-tip="<b>Reached an agent queue</b><br>39.2% of conversations">39.2%</div>
@@ -302,26 +321,7 @@
     <p class="sec-caption">Based on 7.3 million VA conversations, Jan to Jun 2026, including conversations without an L1 tag. This is a record-tag view, a different measurement population from the NLU-based 27.9% containment figure, so the two are not directly comparable.</p>
   </section>
 
-  <!-- 3. MONTHLY TREND -->
-  <section class="card" id="sec-monthly">
-    <p class="kicker">Monthly trend</p>
-    <h2>Containment by brand, January to June</h2>
-    <p class="lede">O2 rose every month to <strong>26.1%</strong>. Virgin Media peaked at <strong>32.7%</strong> in April, then slipped back.</p>
-    <div class="legend">
-      <span class="key"><span class="swatch" style="background:var(--o2-blue)"></span>O2</span>
-      <span class="key"><span class="swatch" style="background:var(--vm-red)"></span>Virgin Media</span>
-    </div>
-    <div class="chart" id="chart-monthly"></div>
-    <details class="data">
-      <summary>View data table</summary>
-      <table>
-        <thead><tr><th>Month</th><th>O2 %</th><th>VM %</th></tr></thead>
-        <tbody id="tbl-monthly"></tbody>
-      </table>
-    </details>
-  </section>
-
-  <!-- 3. VM FAULTS CASE STUDY -->
+  <!-- 4. VM FAULTS CASE STUDY -->
   <section class="card feature" id="sec-faults">
     <p class="kicker">Featured insight</p>
     <h2>The VM Faults journey lost a third of its containment</h2>
