@@ -79,31 +79,52 @@
   .vol-fig .v-word{font-size:19px;font-weight:bold;}
   .vol-fig .v-lab{display:block;font-size:13px;color:var(--ink-3);margin-top:5px;}
   .v-of{font-size:19px;font-weight:bold;color:var(--ink-3);}
+  .vol-spark{flex:1 1 190px;min-width:170px;max-width:260px;}
+  .vol-spark .v-lab{margin-top:0;margin-bottom:6px;}
+
+  /* Comparison deltas */
+  .delta{display:inline-flex;align-items:center;gap:5px;font-size:13px;font-weight:bold;color:var(--ink-2);}
+  .delta .arr{font-size:11px;line-height:1;}
+  .delta .arr.down{color:var(--vm-red);}
+  .delta .arr.up{color:#02D16A;}
+  .delta .vs{font-weight:normal;color:var(--ink-3);}
   .hero-foot{font-size:13px;color:var(--ink-3);margin-top:16px;}
   .hero-foot + .hero-foot{margin-top:6px;}
   .lede.support{font-size:14px;margin-top:10px;}
 
-  /* Outcome stacked bar */
-  .stack-bar{display:flex;gap:2px;height:46px;margin-top:24px;}
-  .seg{
-    display:flex;align-items:center;justify-content:center;
-    font-size:15px;font-weight:bold;min-width:2px;
+  /* Outcome funnel */
+  .funnel-wrap{display:flex;gap:30px;margin-top:22px;flex-wrap:wrap;}
+  .funnel{flex:1 1 460px;display:flex;flex-direction:column;gap:10px;min-width:300px;}
+  .f-bar{
+    display:flex;align-items:center;gap:10px;height:56px;
+    border-radius:6px;padding:0 16px;
   }
-  .seg:first-child{border-radius:6px 0 0 6px;}
-  .seg:last-child{border-radius:0 6px 6px 0;}
-  .stack-legend{display:flex;gap:26px;flex-wrap:wrap;margin-top:14px;font-size:14px;color:var(--ink-2);}
-  .stack-legend .key{display:inline-flex;align-items:center;gap:7px;}
-  .stack-legend .key b{color:var(--ink);}
-  .stack-legend .k-vol{font-size:12px;color:var(--ink-3);}
-  .callout{
-    display:flex;gap:24px;align-items:flex-start;flex-wrap:wrap;
-    background:var(--page);border-radius:12px;padding:22px 26px;margin-top:24px;
+  .f-num{font-size:22px;font-weight:bold;letter-spacing:-0.01em;}
+  .f-txt{font-size:14px;font-weight:bold;}
+  .f-pct{font-size:13px;margin-left:auto;font-weight:bold;}
+  .f-callout{
+    flex:0 1 300px;align-self:flex-end;margin-bottom:6px;
+    border-left:3px solid #4D4D4D;padding-left:16px;
+    font-size:14px;color:var(--ink-2);
   }
-  .callout .c-num{font-size:52px;font-weight:bold;line-height:1;letter-spacing:-0.02em;}
-  .callout .c-numlab{display:block;font-size:13px;color:var(--ink-3);margin-top:5px;}
-  .callout p{flex:1 1 320px;font-size:15px;color:var(--ink-2);}
-  .callout p b{color:var(--ink);}
+  .f-callout b{color:var(--ink);}
   .sec-caption{font-size:13px;color:var(--ink-3);margin-top:16px;}
+  .sec-caption + .sec-caption{margin-top:6px;}
+
+  /* Intent tiles */
+  .intent-groups{display:grid;grid-template-columns:1fr 1fr;gap:26px;margin-top:20px;}
+  .ig-title{font-size:16px;font-weight:bold;}
+  .ig-sub{font-size:13px;color:var(--ink-3);margin-top:2px;}
+  .ig-tiles{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:12px;}
+  .itile{
+    border:1px solid var(--hairline);border-radius:12px;padding:14px;
+    display:flex;flex-direction:column;gap:4px;background:var(--surface);
+  }
+  .i-name{font-size:13px;font-weight:bold;color:var(--ink-2);min-height:34px;}
+  .i-val{display:flex;align-items:baseline;gap:6px;flex-wrap:wrap;}
+  .i-big{font-size:30px;font-weight:bold;line-height:1;letter-spacing:-0.01em;}
+  .i-word{font-size:13px;font-weight:bold;color:var(--ink-2);}
+  .i-sup{font-size:12px;color:var(--ink-3);}
   .brandmark{display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:6px;vertical-align:baseline;}
   .bm-o2{background:var(--o2-blue);}
   .bm-vm{background:var(--vm-red);}
@@ -124,21 +145,6 @@
   .fs{min-width:150px;}
   .fs .fs-num{font-size:40px;font-weight:bold;line-height:1.05;}
   .fs .fs-lab{font-size:14px;color:var(--ink-2);margin-top:2px;}
-
-  /* Horizontal bars */
-  .hbar-chart{margin-top:20px;}
-  .hbar-row{display:grid;grid-template-columns:250px 1fr;gap:12px;align-items:center;margin-bottom:9px;}
-  .hbar-label{font-size:14px;font-weight:bold;text-align:right;line-height:1.25;}
-  .hbar-track{position:relative;height:22px;}
-  .hbar-fill{
-    height:22px;border-radius:0 4px 4px 0;
-    display:inline-flex;align-items:center;min-width:2px;
-  }
-  .hbar-val{
-    position:absolute;left:0;top:0;height:22px;display:flex;align-items:center;
-    font-size:13px;font-weight:bold;color:var(--ink);white-space:nowrap;
-    font-variant-numeric:tabular-nums;
-  }
 
   /* Trust panel */
   .trust-flex{display:flex;gap:28px;align-items:flex-start;flex-wrap:wrap;margin-top:6px;}
@@ -193,7 +199,7 @@
   @media (max-width:820px){
     .hero-grid{grid-template-columns:1fr;}
     .next-grid{grid-template-columns:1fr 1fr;}
-    .hbar-row{grid-template-columns:150px 1fr;}
+    .intent-groups{grid-template-columns:1fr;}
     h1{font-size:30px;}
   }
   @media (max-width:520px){
@@ -220,7 +226,7 @@
     #sec-trust{page-break-before:always;}
     details.data,#tip{display:none !important;}
     .hero-grid{grid-template-columns:1.25fr 1fr 1fr;}
-    .hbar-row{grid-template-columns:200px 1fr;}
+    .intent-groups{grid-template-columns:1fr 1fr;}
     .next-grid{grid-template-columns:1fr 1fr;}
     a{color:inherit;text-decoration:none;}
   }
@@ -232,7 +238,7 @@
   <header class="masthead">
     <div class="wordmark"><span class="vm">Virgin Media</span> <span class="o2">O2</span></div>
     <h1>Webchat virtual assistant performance</h1>
-    <p class="sub">H1 2026 (January to June). The headlines, in under two minutes.</p>
+    <p class="sub">H1 2026. The headlines, in under two minutes.</p>
   </header>
 
   <!-- 1. HERO KPI BAND -->
@@ -241,54 +247,65 @@
     <h2>Containment: how much demand the VA handled end to end</h2>
     <div class="vol-band">
       <div class="vol-fig">
-        <span class="v-top"><span class="v-num">1,309,243</span><span class="v-word">contained</span></span>
-        <span class="v-lab">Conversations where users did not request to speak to an agent</span>
+        <span class="v-top"><span class="v-num">5.5M</span><span class="v-word">conversations</span></span>
+        <span class="v-lab">H1 2026, tagged L1 demand</span>
+        <span class="delta"><span class="arr down">&#9660;</span>15% <span class="vs">vs H2 2025</span></span>
       </div>
-      <div class="v-of">of</div>
+      <div class="v-of">of which</div>
       <div class="vol-fig">
-        <span class="v-top"><span class="v-num">4,697,782</span><span class="v-word">conversations</span></span>
-        <span class="v-lab">H1 2026, Conversations that were classified by the NLU</span>
+        <span class="v-top"><span class="v-num">1.7M</span><span class="v-word">contained</span></span>
+        <span class="v-lab">30.8% of conversations</span>
+        <span class="delta"><span class="arr down">&#9660;</span>16% <span class="vs">vs H2 2025</span></span>
+      </div>
+      <div class="vol-spark">
+        <span class="v-lab">Monthly demand, Jan to Jun</span>
+        <div class="spark" id="spark-vol" aria-hidden="true"></div>
       </div>
     </div>
     <div class="hero-grid">
       <div class="tile overall">
         <span class="t-label">Overall H1 containment</span>
-        <span class="t-value">27.9<span class="pct">%</span></span>
-        <span class="t-note">We contained <b>1,309,243</b> of <b>4,697,782</b> conversations.</span>
+        <span class="t-value">30.8<span class="pct">%</span></span>
+        <span class="delta"><span class="arr down">&#9660;</span>0.3pts <span class="vs">vs H2 2025</span></span>
+        <span class="t-note"><b>Containment declined</b> across the half.</span>
+        <div class="spark" id="spark-total" aria-hidden="true"></div>
       </div>
       <div class="tile">
         <span class="t-label"><span class="brandmark bm-o2"></span>O2</span>
-        <span class="t-value">24.8<span class="pct">%</span></span>
+        <span class="t-value">25.8<span class="pct">%</span></span>
+        <span class="delta"><span class="arr down">&#9660;</span>1.0pts <span class="vs">vs H2 2025</span></span>
         <span class="t-note"><b>Climbing steadily</b> since January.</span>
-        <span class="t-vol"><b>515,208</b> contained of <b>2,078,005</b> conversations</span>
+        <span class="t-vol"><b>561k</b> contained of <b>2.2M</b> conversations</span>
         <div class="spark" id="spark-o2" aria-hidden="true"></div>
       </div>
       <div class="tile">
         <span class="t-label"><span class="brandmark bm-vm"></span>Virgin Media</span>
-        <span class="t-value">30.3<span class="pct">%</span></span>
-        <span class="t-note"><b>Fell back</b> after an April peak.</span>
-        <span class="t-vol"><b>794,035</b> contained of <b>2,619,777</b> conversations</span>
+        <span class="t-value">34.4<span class="pct">%</span></span>
+        <span class="delta"><span class="arr up">&#9650;</span>0.7pts <span class="vs">vs H2 2025</span></span>
+        <span class="t-note"><b>Falling</b> since March.</span>
+        <span class="t-vol"><b>1.1M</b> contained of <b>3.2M</b> conversations</span>
         <div class="spark" id="spark-vm" aria-hidden="true"></div>
       </div>
     </div>
-    <p class="hero-foot">Measured demand excludes timeouts, immediate abandons and other excluded categories. Total demand including these was 7,368,434 conversations.</p>
-    <p class="hero-foot">Containment here is measured on NLU-recognised conversations. Alternative views based on record tags and journey footfall use broader populations and produce higher headline rates. Full detail is available in the monthly containment pack.</p>
+    <p class="hero-foot">Headline figures are based on L1 record tags and exclude conversations without an L1 tag. Total demand including untagged conversations was 7.3M.</p>
+    <p class="hero-foot">Comparison arrows show change versus H2 2025 (Jul to Dec).</p>
   </section>
 
   <!-- 2. MONTHLY TREND -->
   <section class="card" id="sec-monthly">
     <p class="kicker">Monthly trend</p>
     <h2>Containment by brand, January to June</h2>
-    <p class="lede">O2 rose every month to <strong>26.1%</strong>. Virgin Media peaked at <strong>32.7%</strong> in April, then slipped back.</p>
+    <p class="lede">O2 climbed steadily to <strong>26.9%</strong>. Virgin Media has been falling since March, ending the half at <strong>27.6%</strong> and pulling the total down with it.</p>
     <div class="legend">
       <span class="key"><span class="swatch" style="background:var(--o2-blue)"></span>O2</span>
       <span class="key"><span class="swatch" style="background:var(--vm-red)"></span>Virgin Media</span>
+      <span class="key"><span class="swatch" style="background:repeating-linear-gradient(90deg,#6E6E6E 0 5px,transparent 5px 9px)"></span>Total</span>
     </div>
     <div class="chart" id="chart-monthly"></div>
     <details class="data">
       <summary>View data table</summary>
       <table>
-        <thead><tr><th>Month</th><th>O2 %</th><th>VM %</th></tr></thead>
+        <thead><tr><th>Month</th><th>O2 %</th><th>VM %</th><th>Total %</th></tr></thead>
         <tbody id="tbl-monthly"></tbody>
       </table>
     </details>
@@ -298,28 +315,27 @@
   <section class="card" id="sec-outcomes">
     <p class="kicker">Outcome view</p>
     <h2>What actually happened to demand</h2>
-    <p class="lede">Containment says what we resolved. This shows where conversations ended up - includes users who were not classified by the NLU.</p>
-    <div class="stack-bar" role="img" aria-label="Stacked bar of H1 outcome shares: reached an agent queue 39.2%, deflected to the O2 app 5.9%, no agent contact 55.0%">
-      <div class="seg" style="flex-basis:39.2%;background:#4D4D4D;color:#FFFFFF"
-        data-tip="<b>Reached an agent queue</b><br>39.2% of conversations">39.2%</div>
-      <div class="seg" style="flex-basis:5.9%;background:#9DBAFF"
-        data-tip="<b>Deflected to the O2 app</b><br>5.9% of conversations"></div>
-      <div class="seg" style="flex-basis:55.0%;background:#DCDCDC;color:#000000"
-        data-tip="<b>No agent contact</b><br>55.0% of conversations">55.0%</div>
-    </div>
-    <div class="stack-legend">
-      <span class="key"><span class="swatch box" style="background:#4D4D4D"></span>Reached an agent queue <b>39.2%</b> <span class="k-vol">(2,857,656)</span></span>
-      <span class="key"><span class="swatch box" style="background:#9DBAFF"></span>Deflected to the O2 app <b>5.9%</b> <span class="k-vol">(427,769)</span></span>
-      <span class="key"><span class="swatch box" style="background:#DCDCDC"></span>No agent contact <b>55.0%</b> <span class="k-vol">(4,007,753)</span></span>
-    </div>
-    <div class="callout">
-      <div>
-        <span class="c-num">57.6%</span>
-        <span class="c-numlab">asked for an agent</span>
+    <p class="lede">Containment says what we resolved. This shows where conversations ended up.</p>
+    <div class="funnel-wrap">
+      <div class="funnel" role="img" aria-label="Funnel of H1 demand: 7.3M conversations, 4.2M asked for an agent (57.6%), 2.9M reached an agent queue (39.2%)">
+        <div class="f-bar" style="width:100%;background:#DCDCDC;color:#000000"
+          data-tip="<b>7.3M conversations</b><br>All VA demand, Jan to Jun">
+          <span class="f-num">7.3M</span><span class="f-txt">conversations</span>
+        </div>
+        <div class="f-bar" style="width:57.6%;background:#A6A6A6;color:#000000"
+          data-tip="<b>4.2M asked for an agent</b><br>57.6% of all conversations">
+          <span class="f-num">4.2M</span><span class="f-txt">asked for an agent</span><span class="f-pct">57.6%</span>
+        </div>
+        <div class="f-bar" style="width:39.2%;background:#4D4D4D;color:#FFFFFF"
+          data-tip="<b>2.9M reached an agent queue</b><br>39.2% of all conversations">
+          <span class="f-num">2.9M</span><span class="f-txt">reached an agent queue</span><span class="f-pct">39.2%</span>
+        </div>
       </div>
-      <p><b>57.6%</b> of conversations (4,199,499) asked for an agent, but only <b>39.2%</b> (2,857,656) reached a queue. That leaves <b>1,341,843</b> conversations that wanted a human and never got one, either deflected to the app, given up, or out of hours.</p>
+      <aside class="f-callout">
+        <p><b>1.3M</b> asked for an agent but never reached a queue: <b>428k</b> deflected to the O2 app, the rest gave up or arrived out of hours.</p>
+      </aside>
     </div>
-    <p class="sec-caption">Based on 7,293,178 VA conversations, Jan to Jun 2026, including conversations without an L1 tag. This is a record-tag view, a different measurement population from the NLU-based 27.9% containment figure, so the two are not directly comparable.</p>
+    <p class="sec-caption">Based on all 7.3M VA conversations, Jan to Jun, including conversations without an L1 tag. The 5.5M headline containment figures exclude untagged conversations, as noted above.</p>
   </section>
 
   <!-- 4. VM FAULTS CASE STUDY -->
@@ -327,7 +343,7 @@
     <p class="kicker">Featured insight</p>
     <h2>The VM Faults journey lost a third of its containment</h2>
     <p class="lede">Weekly containment held around <strong>42%</strong> all winter. From the week the API journey was re-enabled (10 to 13 April), it fell steadily and now sits at <strong>29%</strong>. This one journey explains why Virgin Media's overall line turned down.</p>
-    <p class="lede support">This decline is confirmed under every measurement lens. Tag-based and journey-footfall views both show Virgin Media containment falling by around 12 points over the same period.</p>
+    <p class="lede support">This decline holds under every measurement lens, including the NLU-measured view and journey footfall.</p>
     <div class="feature-stats">
       <div class="fs"><div class="fs-num">42.2%</div><div class="fs-lab">Winter average<br>(11 Jan to 29 Mar)</div></div>
       <div class="fs"><div class="fs-num" style="color:var(--vm-red)">29.0%</div><div class="fs-lab">Current average<br>(31 May to 28 Jun)</div></div>
@@ -345,19 +361,60 @@
         <tbody id="tbl-faults"></tbody>
       </table>
     </details>
+    <p class="sec-caption">Weekly figures from CloudWatch NLU logs.</p>
   </section>
 
-  <!-- 4. WHERE DEMAND ESCAPES -->
+  <!-- 4. INTENT PERFORMANCE -->
   <section class="card" id="sec-escape">
-    <p class="kicker">Where demand escapes</p>
-    <h2>Top uncontained intents, June 2026</h2>
-    <p class="lede">Retentions, fallback and faults dominate the leakage. The top three alone are worth targeting first.</p>
-    <div class="legend">
-      <span class="key"><span class="swatch box" style="background:var(--o2-blue)"></span>O2</span>
-      <span class="key"><span class="swatch box" style="background:var(--vm-red)"></span>Virgin Media</span>
-      <span class="key"><span class="swatch box" style="background:var(--neutral-bar)"></span>O2 + VM combined</span>
+    <p class="kicker">Intent performance</p>
+    <h2>Top performers and top opportunities, June 2026</h2>
+    <p class="lede">The intents containing the most conversations, and the intents leaking the most to agents.</p>
+    <div class="intent-groups">
+      <div class="ig">
+        <h3 class="ig-title">Top 3 performers</h3>
+        <p class="ig-sub">Most conversations contained</p>
+        <div class="ig-tiles">
+          <div class="itile">
+            <span class="i-name">PIC Driveway</span>
+            <span class="i-val"><span class="i-big">19.6k</span><span class="i-word">contained</span></span>
+            <span class="i-sup">100% containment</span>
+          </div>
+          <div class="itile">
+            <span class="i-name">O2 Payments query</span>
+            <span class="i-val"><span class="i-big">11.7k</span><span class="i-word">contained</span></span>
+            <span class="i-sup">26.8% of 43.8k</span>
+          </div>
+          <div class="itile">
+            <span class="i-name">VM Home move</span>
+            <span class="i-val"><span class="i-big">7.6k</span><span class="i-word">contained</span></span>
+            <span class="i-sup">44.1% of 17.3k</span>
+          </div>
+        </div>
+      </div>
+      <div class="ig">
+        <h3 class="ig-title">Top 3 opportunities</h3>
+        <p class="ig-sub">Most conversations uncontained</p>
+        <div class="ig-tiles">
+          <div class="itile">
+            <span class="i-name">VM Retentions and cancel</span>
+            <span class="i-val"><span class="i-big">55.0k</span><span class="i-word">uncontained</span></span>
+            <span class="i-sup">32.7% contained</span>
+          </div>
+          <div class="itile">
+            <span class="i-name">Fallback</span>
+            <span class="i-val"><span class="i-big">44.4k</span><span class="i-word">uncontained</span></span>
+            <span class="i-sup">Across both brands. O2 35.0%, VM 26.0% contained</span>
+          </div>
+          <div class="itile">
+            <span class="i-name">VM Faults</span>
+            <span class="i-val"><span class="i-big">37.3k</span><span class="i-word">uncontained</span></span>
+            <span class="i-sup">29.0% contained</span>
+          </div>
+        </div>
+      </div>
     </div>
-    <div class="hbar-chart" id="chart-intents"></div>
+    <p class="sec-caption">Fallback behaviour changed in June when the NLU was updated, with fallback volume rising from 46k in May to 63k. Changes to improve fallback handling have been made for July.</p>
+    <p class="sec-caption">Intent performance is measured on NLU intent recognition, a narrower population than the tagged headline figures.</p>
   </section>
 
   <!-- 5. TRUST AND CSAT -->
@@ -395,12 +452,12 @@
       <div class="next">
         <div class="n-chip" style="background:var(--vm-red)">2</div>
         <h3>Target retentions demand</h3>
-        <p>Target retentions demand. Cancel and retentions journeys leaked around <b>55,000 contacts</b> to agents in June alone, more than any other intent. Journey redesign here moves the overall number.</p>
+        <p>Target retentions demand. Cancel and retentions journeys leaked around <b>55k contacts</b> to agents in June alone, more than any other intent. Journey redesign here moves the overall number.</p>
       </div>
       <div class="next">
         <div class="n-chip" style="background:var(--ink)">3</div>
         <h3>Close the fallback gap</h3>
-        <p>Close the fallback gap. Around <b>44,000 fallback contacts</b> went uncontained in June. Expanding NLU coverage for unrecognised queries is a quick containment win.</p>
+        <p>Close the fallback gap. Around <b>44k fallback contacts</b> went uncontained in June. Expanding NLU coverage for unrecognised queries is a quick containment win.</p>
       </div>
       <div class="next">
         <div class="n-chip" style="background:var(--o2-blue)">4</div>
@@ -423,9 +480,11 @@
 
   /* ---------- Data (validated, hardcoded exactly) ---------- */
   var MONTHS = ["Jan","Feb","Mar","Apr","May","Jun"];
-  var O2_MONTHLY = [22.0, 23.8, 24.8, 25.5, 26.1, 26.1];
-  var VM_MONTHLY = [29.4, 28.8, 30.4, 32.7, 30.3, 29.6];
-  var MONTHLY_VOL = [679211, 628361, 729843, 881073, 947074, 832220];
+  var O2_MONTHLY = [23.4, 25.1, 25.8, 26.3, 27.0, 26.9];
+  var VM_MONTHLY = [39.5, 38.6, 38.9, 30.6, 28.6, 27.6];
+  var TOTAL_MONTHLY = [33.2, 33.9, 33.9, 28.7, 28.0, 27.3];
+  var VOL_SPARK = [0.90, 0.87, 0.95, 0.92, 0.97, 0.89];
+  var VOL_LABELS = ["0.90M", "0.87M", "0.95M", "0.92M", "0.97M", "0.89M"];
 
   var FAULTS = [
     ["11 Jan",43.1],["18 Jan",45.3],["25 Jan",44.7],
@@ -434,19 +493,6 @@
     ["5 Apr",39.0],["12 Apr",34.6],["19 Apr",32.1],["26 Apr",32.4],
     ["3 May",30.4],["10 May",31.6],["17 May",33.3],["24 May",31.4],["31 May",28.8],
     ["7 Jun",28.7],["14 Jun",27.2],["21 Jun",29.8],["28 Jun",30.4]
-  ];
-
-  var INTENTS = [
-    {label:"VM Retentions / cancel contextual", vol:54970, brand:"vm"},
-    {label:"Fallback intent (O2 + VM combined)", vol:44430, brand:"both"},
-    {label:"VM Faults", vol:37270, brand:"vm"},
-    {label:"O2 Speak to an agent", vol:36572, brand:"o2"},
-    {label:"O2 Payments query", vol:32072, brand:"o2"},
-    {label:"VM Speak to adviser", vol:31066, brand:"vm"},
-    {label:"O2 SIM query", vol:20366, brand:"o2"},
-    {label:"O2 Billing query", vol:20135, brand:"o2"},
-    {label:"O2 Cancel", vol:19517, brand:"o2"},
-    {label:"O2 Upgrade", vol:18592, brand:"o2"}
   ];
 
   var TRUST = [
@@ -507,49 +553,69 @@
   }
   spark("spark-o2", O2_MONTHLY, BLUE);
   spark("spark-vm", VM_MONTHLY, RED);
+  spark("spark-total", TOTAL_MONTHLY, INK3);
+  spark("spark-vol", VOL_SPARK, INK3);
 
   /* ---------- Chart 2: monthly dual line ---------- */
   (function(){
     var W = 900, H = 360;
     var m = {l:46, r:110, t:18, b:34};
-    var y0 = 20, y1 = 35;
+    var y0 = 20, y1 = 40;
     var svg = el("svg", {viewBox:"0 0 " + W + " " + H, role:"img",
-      "aria-label":"Line chart of monthly containment by brand, January to June 2026"});
+      "aria-label":"Line chart of monthly containment, January to June 2026: O2, Virgin Media and total"});
     document.getElementById("chart-monthly").appendChild(svg);
 
     function X(i){ return m.l + i * (W - m.l - m.r) / (MONTHS.length - 1); }
     function Y(v){ return m.t + (1 - (v - y0) / (y1 - y0)) * (H - m.t - m.b); }
 
-    [20,25,30,35].forEach(function(v){
+    [20,25,30,35,40].forEach(function(v){
       el("line", {x1:m.l, x2:W-m.r, y1:Y(v), y2:Y(v), stroke:GRID, "stroke-width":1}, svg);
       txt(svg, m.l - 10, Y(v) + 4, v + "%", "ax", "end");
     });
     MONTHS.forEach(function(mo,i){ txt(svg, X(i), H - 10, mo, "ax-b", "middle"); });
 
-    function series(data, color, name){
+    function series(data, color, name, dashed){
       var d = data.map(function(v,i){ return (i ? "L" : "M") + X(i) + " " + Y(v); }).join(" ");
-      el("path", {d:d, fill:"none", stroke:color, "stroke-width":2.5,
-        "stroke-linecap":"round", "stroke-linejoin":"round"}, svg);
+      var attrs = {d:d, fill:"none", stroke:color, "stroke-width": dashed ? 2 : 2.5,
+        "stroke-linecap":"round", "stroke-linejoin":"round"};
+      if (dashed) attrs["stroke-dasharray"] = "6 5";
+      el("path", attrs, svg);
       data.forEach(function(v,i){
-        var c = el("circle", {cx:X(i), cy:Y(v), r:4.5, fill:color,
+        var c = el("circle", {cx:X(i), cy:Y(v), r: dashed ? 3.5 : 4.5, fill:color,
           stroke:"#FFFFFF", "stroke-width":2}, svg);
         var hit = el("circle", {cx:X(i), cy:Y(v), r:14, fill:"transparent"}, svg);
         var html = "<b>" + name + " " + pct1(v) + "%</b><br>" + MONTHS[i] + " 2026" +
-          "<br>Measured VA demand, both brands: " + fmt(MONTHLY_VOL[i]);
+          "<br>Tagged demand, both brands: " + VOL_LABELS[i];
         bindTip(hit, html);
         bindTip(c, html);
       });
-      var last = data.length - 1;
-      el("circle", {cx:W - m.r + 16, cy:Y(data[last]) - 4, r:4, fill:color}, svg);
-      txt(svg, W - m.r + 25, Y(data[last]), name + " " + pct1(data[last]) + "%", "dlab", "start");
     }
-    series(VM_MONTHLY, RED, "VM");
-    series(O2_MONTHLY, BLUE, "O2");
+    series(TOTAL_MONTHLY, INK3, "Total", true);
+    series(VM_MONTHLY, RED, "VM", false);
+    series(O2_MONTHLY, BLUE, "O2", false);
+
+    /* End labels converge, so space them out and connect with leader lines */
+    var last = MONTHS.length - 1;
+    var ends = [
+      {name:"VM", color:RED, v:VM_MONTHLY[last]},
+      {name:"Total", color:INK3, v:TOTAL_MONTHLY[last]},
+      {name:"O2", color:BLUE, v:O2_MONTHLY[last]}
+    ].sort(function(a,b){ return b.v - a.v; });
+    var yPrev = -Infinity;
+    ends.forEach(function(e){
+      var ly = Math.max(Y(e.v), yPrev + 18);
+      yPrev = ly;
+      el("line", {x1:X(last) + 6, y1:Y(e.v), x2:W - m.r + 12, y2:ly - 4,
+        stroke:GRID, "stroke-width":1}, svg);
+      el("circle", {cx:W - m.r + 18, cy:ly - 4, r:4, fill:e.color}, svg);
+      txt(svg, W - m.r + 27, ly, e.name + " " + pct1(e.v) + "%", "dlab", "start");
+    });
 
     var tb = document.getElementById("tbl-monthly");
     MONTHS.forEach(function(mo,i){
       var tr = document.createElement("tr");
-      tr.innerHTML = "<td>" + mo + "</td><td>" + pct1(O2_MONTHLY[i]) + "</td><td>" + pct1(VM_MONTHLY[i]) + "</td>";
+      tr.innerHTML = "<td>" + mo + "</td><td>" + pct1(O2_MONTHLY[i]) + "</td><td>" +
+        pct1(VM_MONTHLY[i]) + "</td><td>" + pct1(TOTAL_MONTHLY[i]) + "</td>";
       tb.appendChild(tr);
     });
   })();
@@ -627,38 +693,6 @@
       var tr = document.createElement("tr");
       tr.innerHTML = "<td>" + p[0] + "</td><td>" + pct1(p[1]) + "</td>";
       tb.appendChild(tr);
-    });
-  })();
-
-  /* ---------- Chart 4: horizontal bars ---------- */
-  (function(){
-    var box = document.getElementById("chart-intents");
-    var max = 54970;
-    var colors = {vm:RED, o2:BLUE, both:NEUTRAL};
-    var brandName = {vm:"Virgin Media", o2:"O2", both:"O2 + VM combined"};
-    INTENTS.forEach(function(it){
-      var row = document.createElement("div");
-      row.className = "hbar-row";
-      var lab = document.createElement("div");
-      lab.className = "hbar-label";
-      lab.textContent = it.label;
-      var track = document.createElement("div");
-      track.className = "hbar-track";
-      var w = (it.vol / max) * 84;
-      var fill = document.createElement("div");
-      fill.className = "hbar-fill";
-      fill.style.width = w + "%";
-      fill.style.background = colors[it.brand];
-      var val = document.createElement("div");
-      val.className = "hbar-val";
-      val.style.left = "calc(" + w + "% + 8px)";
-      val.textContent = fmt(it.vol);
-      track.appendChild(fill);
-      track.appendChild(val);
-      row.appendChild(lab);
-      row.appendChild(track);
-      box.appendChild(row);
-      bindTip(track, "<b>" + fmt(it.vol) + " contacts</b><br>" + it.label + "<br>" + brandName[it.brand] + ", June 2026");
     });
   })();
 
