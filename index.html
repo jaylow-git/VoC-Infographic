@@ -66,6 +66,20 @@
   .t-value .pct{font-size:0.55em;font-weight:bold;}
   .tile .t-note{font-size:14px;color:var(--ink-2);}
   .tile .t-note b{color:var(--ink);}
+  .tile .t-vol{font-size:13px;color:var(--ink-3);}
+  .tile .t-vol b{color:var(--ink-2);}
+
+  /* Hero volume band */
+  .vol-band{
+    display:flex;align-items:center;gap:26px;flex-wrap:wrap;
+    margin-top:20px;padding:20px 24px;background:var(--page);border-radius:12px;
+  }
+  .vol-fig .v-top{display:flex;align-items:baseline;gap:9px;flex-wrap:wrap;}
+  .vol-fig .v-num{font-size:42px;font-weight:bold;line-height:1;letter-spacing:-0.01em;}
+  .vol-fig .v-word{font-size:19px;font-weight:bold;}
+  .vol-fig .v-lab{display:block;font-size:13px;color:var(--ink-3);margin-top:5px;}
+  .v-of{font-size:19px;font-weight:bold;color:var(--ink-3);}
+  .hero-foot{font-size:13px;color:var(--ink-3);margin-top:16px;max-width:90ch;}
   .brandmark{display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:6px;vertical-align:baseline;}
   .bm-o2{background:var(--o2-blue);}
   .bm-vm{background:var(--vm-red);}
@@ -175,6 +189,8 @@
     h2{font-size:15pt;}
     .tile .t-value{font-size:34pt;}
     .tile.overall .t-value{font-size:40pt;}
+    .vol-band{padding:14px 18px;gap:20px;}
+    .vol-fig .v-num{font-size:24pt;}
     .fs .fs-num{font-size:22pt;}
     section.feature{page-break-before:always;}
     #sec-trust{page-break-before:always;}
@@ -199,25 +215,39 @@
   <section class="card" id="sec-hero">
     <p class="kicker">H1 headline</p>
     <h2>Containment: how much demand the VA handled end to end</h2>
+    <div class="vol-band">
+      <div class="vol-fig">
+        <span class="v-top"><span class="v-num">1,309,243</span><span class="v-word">contained</span></span>
+        <span class="v-lab">Handled end to end, no agent</span>
+      </div>
+      <div class="v-of">of</div>
+      <div class="vol-fig">
+        <span class="v-top"><span class="v-num">4,697,782</span><span class="v-word">conversations</span></span>
+        <span class="v-lab">H1 2026, measured VA demand</span>
+      </div>
+    </div>
     <div class="hero-grid">
       <div class="tile overall">
         <span class="t-label">Overall H1 containment</span>
         <span class="t-value">27.9<span class="pct">%</span></span>
-        <span class="t-note">One number for both brands, January to June.</span>
+        <span class="t-note">We contained <b>1,309,243</b> of <b>4,697,782</b> conversations.</span>
       </div>
       <div class="tile">
         <span class="t-label"><span class="brandmark bm-o2"></span>O2</span>
         <span class="t-value">24.8<span class="pct">%</span></span>
         <span class="t-note"><b>Climbing steadily</b> since January.</span>
+        <span class="t-vol"><b>515,208</b> contained of <b>2,078,005</b> conversations</span>
         <div class="spark" id="spark-o2" aria-hidden="true"></div>
       </div>
       <div class="tile">
         <span class="t-label"><span class="brandmark bm-vm"></span>Virgin Media</span>
         <span class="t-value">30.3<span class="pct">%</span></span>
         <span class="t-note"><b>Fell back</b> after an April peak.</span>
+        <span class="t-vol"><b>794,035</b> contained of <b>2,619,777</b> conversations</span>
         <div class="spark" id="spark-vm" aria-hidden="true"></div>
       </div>
     </div>
+    <p class="hero-foot">Measured demand excludes timeouts, immediate abandons and other excluded categories. Total demand including these was 7,368,434 conversations.</p>
   </section>
 
   <!-- 2. MONTHLY TREND -->
@@ -341,6 +371,7 @@
   var MONTHS = ["Jan","Feb","Mar","Apr","May","Jun"];
   var O2_MONTHLY = [22.0, 23.8, 24.8, 25.5, 26.1, 26.1];
   var VM_MONTHLY = [29.4, 28.8, 30.4, 32.7, 30.3, 29.6];
+  var MONTHLY_VOL = [679211, 628361, 729843, 881073, 947074, 832220];
 
   var FAULTS = [
     ["11 Jan",43.1],["18 Jan",45.3],["25 Jan",44.7],
@@ -449,8 +480,10 @@
         var c = el("circle", {cx:X(i), cy:Y(v), r:4.5, fill:color,
           stroke:"#FFFFFF", "stroke-width":2}, svg);
         var hit = el("circle", {cx:X(i), cy:Y(v), r:14, fill:"transparent"}, svg);
-        bindTip(hit, "<b>" + name + " " + pct1(v) + "%</b><br>" + MONTHS[i] + " 2026");
-        bindTip(c, "<b>" + name + " " + pct1(v) + "%</b><br>" + MONTHS[i] + " 2026");
+        var html = "<b>" + name + " " + pct1(v) + "%</b><br>" + MONTHS[i] + " 2026" +
+          "<br>Measured VA demand, both brands: " + fmt(MONTHLY_VOL[i]);
+        bindTip(hit, html);
+        bindTip(c, html);
       });
       var last = data.length - 1;
       el("circle", {cx:W - m.r + 16, cy:Y(data[last]) - 4, r:4, fill:color}, svg);
