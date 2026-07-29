@@ -80,6 +80,29 @@
   .vol-fig .v-lab{display:block;font-size:13px;color:var(--ink-3);margin-top:5px;}
   .v-of{font-size:19px;font-weight:bold;color:var(--ink-3);}
   .hero-foot{font-size:13px;color:var(--ink-3);margin-top:16px;max-width:90ch;}
+  .hero-foot + .hero-foot{margin-top:6px;}
+  .lede.support{font-size:14px;margin-top:10px;}
+
+  /* Outcome stacked bar */
+  .stack-bar{display:flex;gap:2px;height:46px;margin-top:24px;}
+  .seg{
+    display:flex;align-items:center;justify-content:center;
+    font-size:15px;font-weight:bold;min-width:2px;
+  }
+  .seg:first-child{border-radius:6px 0 0 6px;}
+  .seg:last-child{border-radius:0 6px 6px 0;}
+  .stack-legend{display:flex;gap:26px;flex-wrap:wrap;margin-top:14px;font-size:14px;color:var(--ink-2);}
+  .stack-legend .key{display:inline-flex;align-items:center;gap:7px;}
+  .stack-legend .key b{color:var(--ink);}
+  .callout{
+    display:flex;gap:24px;align-items:flex-start;flex-wrap:wrap;
+    background:var(--page);border-radius:12px;padding:22px 26px;margin-top:24px;
+  }
+  .callout .c-num{font-size:52px;font-weight:bold;line-height:1;letter-spacing:-0.02em;}
+  .callout .c-numlab{display:block;font-size:13px;color:var(--ink-3);margin-top:5px;}
+  .callout p{flex:1 1 320px;font-size:15px;color:var(--ink-2);max-width:62ch;}
+  .callout p b{color:var(--ink);}
+  .sec-caption{font-size:13px;color:var(--ink-3);margin-top:16px;max-width:95ch;}
   .brandmark{display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:6px;vertical-align:baseline;}
   .bm-o2{background:var(--o2-blue);}
   .bm-vm{background:var(--vm-red);}
@@ -248,6 +271,7 @@
       </div>
     </div>
     <p class="hero-foot">Measured demand excludes timeouts, immediate abandons and other excluded categories. Total demand including these was 7,368,434 conversations.</p>
+    <p class="hero-foot">Containment here is measured on NLU-recognised conversations. Alternative views based on record tags and journey footfall use broader populations and produce higher headline rates. Full detail is available in the monthly containment pack.</p>
   </section>
 
   <!-- 2. MONTHLY TREND -->
@@ -274,6 +298,7 @@
     <p class="kicker">Featured insight</p>
     <h2>The VM Faults journey lost a third of its containment</h2>
     <p class="lede">Weekly containment held around <strong>42%</strong> all winter. From the week the API journey was re-enabled (10 to 13 April), it fell steadily and now sits at <strong>29%</strong>. This one journey explains why Virgin Media's overall line turned down.</p>
+    <p class="lede support">This decline is confirmed under every measurement lens. Tag-based and journey-footfall views both show Virgin Media containment falling by around 12 points over the same period.</p>
     <div class="feature-stats">
       <div class="fs"><div class="fs-num">42.2%</div><div class="fs-lab">Winter average<br>(11 Jan to 29 Mar)</div></div>
       <div class="fs"><div class="fs-num" style="color:var(--vm-red)">29.0%</div><div class="fs-lab">Current average<br>(31 May to 28 Jun)</div></div>
@@ -304,6 +329,34 @@
       <span class="key"><span class="swatch box" style="background:var(--neutral-bar)"></span>O2 + VM combined</span>
     </div>
     <div class="hbar-chart" id="chart-intents"></div>
+  </section>
+
+  <!-- 4b. WHAT ACTUALLY HAPPENED TO DEMAND -->
+  <section class="card" id="sec-outcomes">
+    <p class="kicker">Outcome view</p>
+    <h2>What actually happened to demand</h2>
+    <p class="lede">Containment says what we resolved. This shows where conversations ended up.</p>
+    <div class="stack-bar" role="img" aria-label="Stacked bar of H1 outcome shares: reached an agent queue 39.2%, deflected to the O2 app 5.9%, no agent contact 55.0%">
+      <div class="seg" style="flex-basis:39.2%;background:#4D4D4D;color:#FFFFFF"
+        data-tip="<b>Reached an agent queue</b><br>39.2% of conversations">39.2%</div>
+      <div class="seg" style="flex-basis:5.9%;background:#9DBAFF"
+        data-tip="<b>Deflected to the O2 app</b><br>5.9% of conversations"></div>
+      <div class="seg" style="flex-basis:55.0%;background:#DCDCDC;color:#000000"
+        data-tip="<b>No agent contact</b><br>55.0% of conversations">55.0%</div>
+    </div>
+    <div class="stack-legend">
+      <span class="key"><span class="swatch box" style="background:#4D4D4D"></span>Reached an agent queue <b>39.2%</b></span>
+      <span class="key"><span class="swatch box" style="background:#9DBAFF"></span>Deflected to the O2 app <b>5.9%</b></span>
+      <span class="key"><span class="swatch box" style="background:#DCDCDC"></span>No agent contact <b>55.0%</b></span>
+    </div>
+    <div class="callout">
+      <div>
+        <span class="c-num">57.6%</span>
+        <span class="c-numlab">asked for an agent</span>
+      </div>
+      <p><b>57.6%</b> of conversations asked for an agent, but only <b>39.2%</b> reached a queue. Around <b>1.3 million</b> conversations wanted a human and never got one, either deflected to the app, given up, or out of hours.</p>
+    </div>
+    <p class="sec-caption">Based on 7.3 million VA conversations, Jan to Jun 2026, including conversations without an L1 tag. This is a record-tag view, a different measurement population from the NLU-based 27.9% containment figure, so the two are not directly comparable.</p>
   </section>
 
   <!-- 5. TRUST AND CSAT -->
@@ -649,6 +702,11 @@
     });
     el("line", {x1:m.l, x2:W-m.r, y1:Y(0), y2:Y(0), stroke:INK3, "stroke-width":1}, svg);
   })();
+
+  /* ---------- Static tooltip bindings ---------- */
+  document.querySelectorAll("[data-tip]").forEach(function(n){
+    bindTip(n, n.getAttribute("data-tip"));
+  });
 
   /* ---------- Footer date ---------- */
   document.getElementById("gen-date").textContent =
