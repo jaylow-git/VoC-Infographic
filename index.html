@@ -247,15 +247,15 @@
     <h2>Containment: how much demand the VA handled end to end</h2>
     <div class="vol-band">
       <div class="vol-fig">
-        <span class="v-top"><span class="v-num">5.5M</span><span class="v-word">conversations</span></span>
+        <span class="v-top"><span class="v-num">5.3M</span><span class="v-word">conversations</span></span>
         <span class="v-lab">H1 2026, tagged L1 demand</span>
         <span class="delta"><span class="arr down">&#9660;</span>15% <span class="vs">vs H2 2025</span></span>
       </div>
       <div class="v-of">of which</div>
       <div class="vol-fig">
-        <span class="v-top"><span class="v-num">1.7M</span><span class="v-word">contained</span></span>
-        <span class="v-lab">30.8% of conversations</span>
-        <span class="delta"><span class="arr down">&#9660;</span>16% <span class="vs">vs H2 2025</span></span>
+        <span class="v-top"><span class="v-num">1.6M</span><span class="v-word">contained</span></span>
+        <span class="v-lab">29.1% of conversations</span>
+        <span class="delta"><span class="arr down">&#9660;</span>15% <span class="vs">vs H2 2025</span></span>
       </div>
       <div class="vol-spark">
         <span class="v-lab">Monthly demand, Jan to Jun</span>
@@ -265,9 +265,9 @@
     <div class="hero-grid">
       <div class="tile overall">
         <span class="t-label">Overall H1 containment</span>
-        <span class="t-value">30.8<span class="pct">%</span></span>
-        <span class="delta"><span class="arr down">&#9660;</span>0.3pts <span class="vs">vs H2 2025</span></span>
-        <span class="t-note"><b>Containment declined</b> across the half.</span>
+        <span class="t-value">29.1<span class="pct">%</span></span>
+        <span class="delta"><span class="arr down">&#9660;</span>0.1pts <span class="vs">vs H2 2025</span></span>
+        <span class="t-note">Containment <b>peaked in March</b> and has declined since.</span>
         <div class="spark" id="spark-total" aria-hidden="true"></div>
       </div>
       <div class="tile">
@@ -280,22 +280,21 @@
       </div>
       <div class="tile">
         <span class="t-label"><span class="brandmark bm-vm"></span>Virgin Media</span>
-        <span class="t-value">34.4<span class="pct">%</span></span>
+        <span class="t-value">31.3<span class="pct">%</span></span>
         <span class="delta"><span class="arr up">&#9650;</span>0.7pts <span class="vs">vs H2 2025</span></span>
-        <span class="t-note"><b>Falling</b> since March.</span>
-        <span class="t-vol"><b>1.1M</b> contained of <b>3.2M</b> conversations</span>
+        <span class="t-note"><b>Fell away</b> after a March peak.</span>
+        <span class="t-vol"><b>990k</b> contained of <b>3.2M</b> conversations</span>
         <div class="spark" id="spark-vm" aria-hidden="true"></div>
       </div>
     </div>
-    <p class="hero-foot">Headline figures are based on L1 record tags and exclude conversations without an L1 tag. Total demand including untagged conversations was 7.3M.</p>
-    <p class="hero-foot">Comparison arrows show change versus H2 2025 (Jul to Dec).</p>
+    <p class="hero-foot">Headline figures are based on L1 record tags and exclude conversations without an L1 tag (a further 1.8M conversations). Comparison arrows show change versus H2 2025 (Jul to Dec).</p>
   </section>
 
   <!-- 2. MONTHLY TREND -->
   <section class="card" id="sec-monthly">
     <p class="kicker">Monthly trend</p>
     <h2>Containment by brand, January to June</h2>
-    <p class="lede">O2 climbed steadily to <strong>26.9%</strong>. Virgin Media has been falling since March, ending the half at <strong>27.6%</strong> and pulling the total down with it.</p>
+    <p class="lede">O2 climbed steadily to <strong>26.9%</strong>. Virgin Media peaked at <strong>34.2%</strong> in March, then fell away to <strong>27.8%</strong>, pulling the total down with it.</p>
     <div class="legend">
       <span class="key"><span class="swatch" style="background:var(--o2-blue)"></span>O2</span>
       <span class="key"><span class="swatch" style="background:var(--vm-red)"></span>Virgin Media</span>
@@ -335,7 +334,7 @@
         <p><b>1.3M</b> asked for an agent but never reached a queue: <b>428k</b> deflected to the O2 app, the rest gave up or arrived out of hours.</p>
       </aside>
     </div>
-    <p class="sec-caption">Based on all 7.3M VA conversations, Jan to Jun, including conversations without an L1 tag. The 5.5M headline containment figures exclude untagged conversations, as noted above.</p>
+    <p class="sec-caption">Based on all 7.3M VA conversations, Jan to Jun, including conversations without an L1 tag. The 5.3M headline containment figures exclude untagged conversations, as noted above.</p>
   </section>
 
   <!-- 4. VM FAULTS CASE STUDY -->
@@ -481,10 +480,10 @@
   /* ---------- Data (validated, hardcoded exactly) ---------- */
   var MONTHS = ["Jan","Feb","Mar","Apr","May","Jun"];
   var O2_MONTHLY = [23.4, 25.1, 25.8, 26.3, 27.0, 26.9];
-  var VM_MONTHLY = [39.5, 38.6, 38.9, 30.6, 28.6, 27.6];
-  var TOTAL_MONTHLY = [33.2, 33.9, 33.9, 28.7, 28.0, 27.3];
-  var VOL_SPARK = [0.90, 0.87, 0.95, 0.92, 0.97, 0.89];
-  var VOL_LABELS = ["0.90M", "0.87M", "0.95M", "0.92M", "0.97M", "0.89M"];
+  var VM_MONTHLY = [33.1, 33.1, 34.2, 30.8, 28.8, 27.8];
+  var TOTAL_MONTHLY = [29.1, 30.1, 30.9, 28.8, 28.1, 27.4];
+  var VOL_SPARK = [0.84, 0.82, 0.91, 0.92, 0.96, 0.88];
+  var VOL_LABELS = ["0.84M", "0.82M", "0.91M", "0.92M", "0.96M", "0.88M"];
 
   var FAULTS = [
     ["11 Jan",43.1],["18 Jan",45.3],["25 Jan",44.7],
@@ -560,7 +559,7 @@
   (function(){
     var W = 900, H = 360;
     var m = {l:46, r:110, t:18, b:34};
-    var y0 = 20, y1 = 40;
+    var y0 = 20, y1 = 36;
     var svg = el("svg", {viewBox:"0 0 " + W + " " + H, role:"img",
       "aria-label":"Line chart of monthly containment, January to June 2026: O2, Virgin Media and total"});
     document.getElementById("chart-monthly").appendChild(svg);
@@ -568,7 +567,7 @@
     function X(i){ return m.l + i * (W - m.l - m.r) / (MONTHS.length - 1); }
     function Y(v){ return m.t + (1 - (v - y0) / (y1 - y0)) * (H - m.t - m.b); }
 
-    [20,25,30,35,40].forEach(function(v){
+    [20,25,30,35].forEach(function(v){
       el("line", {x1:m.l, x2:W-m.r, y1:Y(v), y2:Y(v), stroke:GRID, "stroke-width":1}, svg);
       txt(svg, m.l - 10, Y(v) + 4, v + "%", "ax", "end");
     });
