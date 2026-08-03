@@ -87,6 +87,7 @@
   .delta .arr{font-size:11px;line-height:1;}
   .delta .arr.down{color:var(--vm-red);}
   .delta .arr.up{color:#02D16A;}
+  .delta .arr.neutral{color:var(--ink-3);}
   .delta .vs{font-weight:normal;color:var(--ink-3);}
   .hero-foot{font-size:13px;color:var(--ink-3);margin-top:16px;}
   .hero-foot + .hero-foot{margin-top:6px;}
@@ -108,6 +109,12 @@
     font-size:14px;color:var(--ink-2);
   }
   .f-callout b{color:var(--ink);}
+  .f-sub{font-size:12px;color:var(--ink-3);margin-top:6px;}
+  .chart-note{
+    border-left:3px solid var(--vm-red);padding-left:16px;margin-top:16px;
+    font-size:14px;color:var(--ink-2);
+  }
+  .chart-note b{color:var(--ink);}
   .sec-caption{font-size:13px;color:var(--ink-3);margin-top:16px;}
   .sec-caption + .sec-caption{margin-top:6px;}
 
@@ -247,60 +254,64 @@
     <h2>Containment: how much demand the VA handled end to end</h2>
     <div class="vol-band">
       <div class="vol-fig">
-        <span class="v-top"><span class="v-num">5.3M</span><span class="v-word">conversations</span></span>
-        <span class="v-lab">H1 2026, tagged L1 demand</span>
-        <span class="delta"><span class="arr down">&#9660;</span>15% <span class="vs">vs H2 2025</span></span>
+        <span class="v-top"><span class="v-num">5.0M</span><span class="v-word">conversations</span></span>
+        <span class="v-lab">H1 2026, engaged conversations</span>
+        <span class="delta"><span class="arr neutral">&#9660;</span>6% <span class="vs">vs H2 2025</span></span>
       </div>
       <div class="v-of">of which</div>
       <div class="vol-fig">
-        <span class="v-top"><span class="v-num">1.6M</span><span class="v-word">contained</span></span>
-        <span class="v-lab">29.1% of conversations</span>
-        <span class="delta"><span class="arr down">&#9660;</span>15% <span class="vs">vs H2 2025</span></span>
+        <span class="v-top"><span class="v-num">1.1M</span><span class="v-word">contained</span></span>
+        <span class="v-lab">22.6% of conversations</span>
+        <span class="delta"><span class="arr up">&#9650;</span>4% <span class="vs">vs H2 2025</span></span>
       </div>
       <div class="vol-spark">
         <span class="v-lab">Monthly demand, Jan to Jun</span>
         <div class="spark" id="spark-vol" aria-hidden="true"></div>
       </div>
     </div>
+    <p class="lede support">Conversation volume fell <strong>6%</strong> against H2 2025, but contained volume rose <strong>4%</strong>.</p>
     <div class="hero-grid">
       <div class="tile overall">
         <span class="t-label">Overall H1 containment</span>
-        <span class="t-value">29.1<span class="pct">%</span></span>
-        <span class="delta"><span class="arr down">&#9660;</span>0.1pts <span class="vs">vs H2 2025</span></span>
-        <span class="t-note">Containment <b>peaked in March</b> and has declined since.</span>
+        <span class="t-value">22.6<span class="pct">%</span></span>
+        <span class="delta"><span class="arr up">&#9650;</span>2.1pts <span class="vs">vs H2 2025</span></span>
+        <span class="t-note"><b>Stable</b>, apart from a May outage dip.</span>
         <div class="spark" id="spark-total" aria-hidden="true"></div>
       </div>
       <div class="tile">
         <span class="t-label"><span class="brandmark bm-o2"></span>O2</span>
-        <span class="t-value">25.8<span class="pct">%</span></span>
-        <span class="delta"><span class="arr down">&#9660;</span>1.0pts <span class="vs">vs H2 2025</span></span>
+        <span class="t-value">22.4<span class="pct">%</span></span>
+        <span class="delta"><span class="arr down">&#9660;</span>0.4pts <span class="vs">vs H2 2025</span></span>
         <span class="t-note"><b>Climbing steadily</b> since January.</span>
-        <span class="t-vol"><b>561k</b> contained of <b>2.2M</b> conversations</span>
+        <span class="t-vol"><b>500k</b> contained of <b>2.2M</b> conversations</span>
         <div class="spark" id="spark-o2" aria-hidden="true"></div>
       </div>
       <div class="tile">
         <span class="t-label"><span class="brandmark bm-vm"></span>Virgin Media</span>
-        <span class="t-value">31.3<span class="pct">%</span></span>
-        <span class="delta"><span class="arr up">&#9650;</span>0.7pts <span class="vs">vs H2 2025</span></span>
-        <span class="t-note"><b>Fell away</b> after a March peak.</span>
-        <span class="t-vol"><b>990k</b> contained of <b>3.2M</b> conversations</span>
+        <span class="t-value">22.7<span class="pct">%</span></span>
+        <span class="delta"><span class="arr up">&#9650;</span>4.4pts <span class="vs">vs H2 2025</span></span>
+        <span class="t-note"><b>Stable</b>, apart from a May outage dip.</span>
+        <span class="t-vol"><b>628k</b> contained of <b>2.8M</b> conversations</span>
         <div class="spark" id="spark-vm" aria-hidden="true"></div>
       </div>
     </div>
-    <p class="hero-foot">Headline figures are based on L1 record tags and exclude conversations without an L1 tag (a further 1.8M conversations). Comparison arrows show change versus H2 2025 (Jul to Dec).</p>
+    <p class="hero-foot">Containment is measured on engaged conversations only, meaning customers who sent at least one message to the virtual assistant. Triage leakage is excluded. Comparison arrows show change versus H2 2025 (Jul to Dec).</p>
   </section>
 
   <!-- 2. MONTHLY TREND -->
   <section class="card" id="sec-monthly">
     <p class="kicker">Monthly trend</p>
     <h2>Containment by brand, January to June</h2>
-    <p class="lede">O2 climbed steadily to <strong>26.9%</strong>. Virgin Media peaked at <strong>34.2%</strong> in March, then fell away to <strong>27.8%</strong>, pulling the total down with it.</p>
+    <p class="lede">O2 climbed steadily to <strong>23.7%</strong>. Virgin Media held steady around the mid-twenties, apart from a sharp dip in May caused by an outage.</p>
     <div class="legend">
       <span class="key"><span class="swatch" style="background:var(--o2-blue)"></span>O2</span>
       <span class="key"><span class="swatch" style="background:var(--vm-red)"></span>Virgin Media</span>
       <span class="key"><span class="swatch" style="background:repeating-linear-gradient(90deg,#6E6E6E 0 5px,transparent 5px 9px)"></span>Total</span>
     </div>
     <div class="chart" id="chart-monthly"></div>
+    <div class="chart-note">
+      <p><b>May outage.</b> A spike in customers asking for an agent directly pushed Speak to an agent volume from around <b>75k to 203k</b>. Excluding those requests, Virgin Media containment in May was <b>25.7%</b>.</p>
+    </div>
     <details class="data">
       <summary>View data table</summary>
       <table>
@@ -316,33 +327,37 @@
     <h2>What actually happened to demand</h2>
     <p class="lede">Containment says what we resolved. This shows where conversations ended up.</p>
     <div class="funnel-wrap">
-      <div class="funnel" role="img" aria-label="Funnel of H1 demand: 7.3M conversations, 4.2M asked for an agent (57.6%), 2.9M reached an agent queue (39.2%)">
-        <div class="f-bar" style="width:100%;background:#DCDCDC;color:#000000"
-          data-tip="<b>7.3M conversations</b><br>All VA demand, Jan to Jun">
-          <span class="f-num">7.3M</span><span class="f-txt">conversations</span>
+      <div class="funnel" role="img" aria-label="Four stage funnel: 7.5M conversations started, 5.0M engaged with the assistant (66.6%), 3.9M asked for an agent (78.4% of engaged), 2.6M reached an agent (65.6% of those who asked)">
+        <div class="f-bar" style="width:100%;background:#E4E4E4;color:#000000"
+          data-tip="<b>7.5M conversations started</b><br>All conversations, Jan to Jun">
+          <span class="f-num">7.5M</span><span class="f-txt">conversations started</span>
         </div>
-        <div class="f-bar" style="width:57.6%;background:#A6A6A6;color:#000000"
-          data-tip="<b>4.2M asked for an agent</b><br>57.6% of all conversations">
-          <span class="f-num">4.2M</span><span class="f-txt">asked for an agent</span><span class="f-pct">57.6%</span>
+        <div class="f-bar" style="width:66.7%;background:#C4C4C4;color:#000000"
+          data-tip="<b>5.0M engaged with the assistant</b><br>66.6% of conversations started">
+          <span class="f-num">5.0M</span><span class="f-txt">engaged with the assistant</span><span class="f-pct">66.6%</span>
         </div>
-        <div class="f-bar" style="width:39.2%;background:#4D4D4D;color:#FFFFFF"
-          data-tip="<b>2.9M reached an agent queue</b><br>39.2% of all conversations">
-          <span class="f-num">2.9M</span><span class="f-txt">reached an agent queue</span><span class="f-pct">39.2%</span>
+        <div class="f-bar" style="width:52.0%;background:#8C8C8C;color:#000000"
+          data-tip="<b>3.9M asked for an agent</b><br>78.4% of engaged conversations">
+          <span class="f-num">3.9M</span><span class="f-txt">asked for an agent</span><span class="f-pct">78.4%</span>
         </div>
+        <div class="f-bar" style="width:34.7%;background:#4D4D4D;color:#FFFFFF"
+          data-tip="<b>2.6M reached an agent</b><br>65.6% of those who asked">
+          <span class="f-num">2.6M</span><span class="f-txt">reached an agent</span><span class="f-pct">65.6%</span>
+        </div>
+        <p class="f-sub">Engaged means the customer sent at least one message. Stage percentages are of the stage above.</p>
       </div>
       <aside class="f-callout">
-        <p><b>1.3M</b> asked for an agent but never reached a queue: <b>428k</b> deflected to the O2 app, the rest gave up or arrived out of hours.</p>
+        <p><b>1.3M</b> asked for an agent but never reached one: <b>424k</b> deflected to the O2 app, <b>352k</b> arrived out of hours, and around <b>573k</b> left before transfer.</p>
       </aside>
     </div>
-    <p class="sec-caption">Based on all 7.3M VA conversations, Jan to Jun, including conversations without an L1 tag. The 5.3M headline containment figures exclude untagged conversations, as noted above.</p>
+    <p class="sec-caption">Funnel figures cover all conversations, Jan to Jun, on the same engaged population as the containment figures above.</p>
   </section>
 
   <!-- 4. VM FAULTS CASE STUDY -->
   <section class="card feature" id="sec-faults">
     <p class="kicker">Featured insight</p>
     <h2>The VM Faults journey lost a third of its containment</h2>
-    <p class="lede">Weekly containment held around <strong>42%</strong> all winter. From the week the API journey was re-enabled (10 to 13 April), it fell steadily and now sits at <strong>29%</strong>. This one journey explains why Virgin Media's overall line turned down.</p>
-    <p class="lede support">This decline holds under every measurement lens, including the NLU-measured view and journey footfall.</p>
+    <p class="lede">Weekly containment held around <strong>42%</strong> all winter. From the week the API journey was re-enabled (10 to 13 April), it fell steadily and now sits at <strong>29%</strong>. This is the clearest single recovery opportunity we have.</p>
     <div class="feature-stats">
       <div class="fs"><div class="fs-num">42.2%</div><div class="fs-lab">Winter average<br>(11 Jan to 29 Mar)</div></div>
       <div class="fs"><div class="fs-num" style="color:var(--vm-red)">29.0%</div><div class="fs-lab">Current average<br>(31 May to 28 Jun)</div></div>
@@ -479,11 +494,11 @@
 
   /* ---------- Data (validated, hardcoded exactly) ---------- */
   var MONTHS = ["Jan","Feb","Mar","Apr","May","Jun"];
-  var O2_MONTHLY = [23.4, 25.1, 25.8, 26.3, 27.0, 26.9];
-  var VM_MONTHLY = [33.1, 33.1, 34.2, 30.8, 28.8, 27.8];
-  var TOTAL_MONTHLY = [29.1, 30.1, 30.9, 28.8, 28.1, 27.4];
-  var VOL_SPARK = [0.84, 0.82, 0.91, 0.92, 0.96, 0.88];
-  var VOL_LABELS = ["0.84M", "0.82M", "0.91M", "0.92M", "0.96M", "0.88M"];
+  var O2_MONTHLY = [19.5, 21.5, 22.3, 23.2, 23.7, 23.7];
+  var VM_MONTHLY = [24.6, 24.9, 26.5, 21.3, 15.1, 24.5];
+  var TOTAL_MONTHLY = [22.2, 23.5, 24.7, 22.2, 18.9, 24.1];
+  var VOL_SPARK = [773, 755, 842, 877, 879, 871];
+  var VOL_LABELS = ["773k", "755k", "842k", "877k", "879k", "871k"];
 
   var FAULTS = [
     ["11 Jan",43.1],["18 Jan",45.3],["25 Jan",44.7],
@@ -559,7 +574,7 @@
   (function(){
     var W = 900, H = 360;
     var m = {l:46, r:110, t:18, b:34};
-    var y0 = 20, y1 = 36;
+    var y0 = 12, y1 = 29;
     var svg = el("svg", {viewBox:"0 0 " + W + " " + H, role:"img",
       "aria-label":"Line chart of monthly containment, January to June 2026: O2, Virgin Media and total"});
     document.getElementById("chart-monthly").appendChild(svg);
@@ -567,11 +582,16 @@
     function X(i){ return m.l + i * (W - m.l - m.r) / (MONTHS.length - 1); }
     function Y(v){ return m.t + (1 - (v - y0) / (y1 - y0)) * (H - m.t - m.b); }
 
-    [20,25,30,35].forEach(function(v){
+    [15,20,25].forEach(function(v){
       el("line", {x1:m.l, x2:W-m.r, y1:Y(v), y2:Y(v), stroke:GRID, "stroke-width":1}, svg);
       txt(svg, m.l - 10, Y(v) + 4, v + "%", "ax", "end");
     });
     MONTHS.forEach(function(mo,i){ txt(svg, X(i), H - 10, mo, "ax-b", "middle"); });
+
+    /* May outage band, drawn behind the series */
+    var halfStep = (X(1) - X(0)) / 2;
+    el("rect", {x:X(4) - halfStep * 0.5, y:m.t, width:halfStep, height:H - m.t - m.b,
+      fill:RED, opacity:0.06}, svg);
 
     function series(data, color, name, dashed){
       var d = data.map(function(v,i){ return (i ? "L" : "M") + X(i) + " " + Y(v); }).join(" ");
@@ -584,7 +604,7 @@
           stroke:"#FFFFFF", "stroke-width":2}, svg);
         var hit = el("circle", {cx:X(i), cy:Y(v), r:14, fill:"transparent"}, svg);
         var html = "<b>" + name + " " + pct1(v) + "%</b><br>" + MONTHS[i] + " 2026" +
-          "<br>Tagged demand, both brands: " + VOL_LABELS[i];
+          "<br>Engaged conversations, both brands: " + VOL_LABELS[i];
         bindTip(hit, html);
         bindTip(c, html);
       });
@@ -592,6 +612,13 @@
     series(TOTAL_MONTHLY, INK3, "Total", true);
     series(VM_MONTHLY, RED, "VM", false);
     series(O2_MONTHLY, BLUE, "O2", false);
+
+    /* Flag the May outage on the Virgin Media point the dip belongs to */
+    var mayX = X(4), mayY = Y(VM_MONTHLY[4]);
+    el("circle", {cx:mayX, cy:mayY, r:9, fill:"none", stroke:RED, "stroke-width":2, opacity:0.5}, svg);
+    el("line", {x1:mayX, y1:mayY + 11, x2:mayX, y2:mayY + 24, stroke:RED, "stroke-width":1.5}, svg);
+    txt(svg, mayX, mayY + 39, "May outage", "anno", "middle");
+    txt(svg, mayX, mayY + 54, "VM 15.1%, see note below", "anno-sub", "middle");
 
     /* End labels converge, so space them out and connect with leader lines */
     var last = MONTHS.length - 1;
