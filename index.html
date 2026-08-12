@@ -249,13 +249,13 @@
     <div class="vol-band">
       <div class="vb-group">
         <div class="vol-fig">
-          <span class="v-top"><span class="v-num">5.0M</span><span class="v-word">conversations</span></span>
+          <span class="v-top"><span class="v-num">5M</span><span class="v-word">conversations</span></span>
           <span class="v-lab">H1 2026, engaged conversations</span>
           <span class="delta"><span class="arr neutral">&#9660;</span>6% <span class="vs">vs H2 2025</span></span>
         </div>
         <div class="v-of">of which</div>
         <div class="vol-fig">
-          <span class="v-top"><span class="v-num">2.0M</span><span class="v-word">Chatbot assisted</span></span>
+          <span class="v-top"><span class="v-num">2M</span><span class="v-word">Chatbot assisted</span></span>
           <span class="v-lab">40.2% of conversations</span>
           <span class="delta"><span class="arr down">&#9660;</span>1.5pts <span class="vs">vs H2 2025</span></span>
         </div>
@@ -702,9 +702,9 @@
   (function(){
     /* Width matches the card's inner width at desktop, so the 13px floor on
        type survives the viewBox scaling rather than rendering smaller. */
-    var W = 974, H = 650;
+    var W = 974, H = 630;
     var svg = el("svg", {viewBox:"0 0 " + W + " " + H, role:"img",
-      "aria-label":"Flow diagram of 7.5M conversations started. 2M never engaged, 548k engaged but did not get past triage, and 5.0M engaged with the assistant. Of those engaged, 3.9M asked for an agent and 1.1M did not. Of those who asked, 2.6M reached an agent queue, 424k were sent to the O2 app, 532k left before reaching a queue and 348k arrived out of hours. 2.0M conversations were Chatbot assisted."});
+      "aria-label":"Flow diagram of 7.5M conversations started. 2M never engaged, 548k engaged but did not get past triage, and 5M engaged with the assistant. Of those engaged, 3.9M asked for an agent and 1.1M did not. Of those who asked, 2.6M reached an agent queue, 424k were sent to the O2 app, 532k left before reaching a queue and 348k arrived out of hours. 2M conversations were Chatbot assisted."});
     document.getElementById("chart-flow").appendChild(svg);
 
     var GREEN = "#02D16A", GREEN_INK = "#00301A";
@@ -718,16 +718,16 @@
        assisted, which is enlarged because it is the headline metric. */
     var N = {
       started: {x:0,   w:120, y:70,  h:500.0, fill:PLUM,       ink:WHITE,     big:1, vol:"7.5M", lines:["Conversations","started"]},
-      never:   {x:162, w:190, y:20,  h:133.0, fill:STEP_GREY,  ink:WHITE,     big:1, vol:"2M",   lines:["Never engaged","(no message sent)"], pct:"26.6% of 7.5M"},
-      triage:  {x:162, w:190, y:178, h:70.0,  fill:STEP_GREY,  ink:WHITE,     big:1, vol:"548k", lines:["Engaged, not past triage"], pct:"7.3% of 7.5M"},
-      engaged: {x:162, w:190, y:268, h:333.0, fill:PURPLE,     ink:WHITE,     big:1, vol:"5.0M", lines:["Engaged with the","assistant"], pct:"66.6% of 7.5M"},
-      asked:   {x:393, w:154, y:210, h:257.5, fill:STEP_GREY,  ink:WHITE,     big:1, vol:"3.9M", lines:["Asked for an agent"], pct:"51.5% of 7.5M"},
-      noagent: {x:393, w:154, y:525, h:75.0,  fill:GREEN,      ink:GREEN_INK, big:1, vol:"1.1M", lines:["No agent requested"], pct:"15.0% of 7.5M"},
-      queue:   {x:588, w:204, y:30,  h:171.0, fill:RED,        ink:WHITE,     big:1, vol:"2.6M", lines:["Reached an agent queue"], pct:"34.2% of 7.5M"},
-      app:     {x:588, w:204, y:245, h:40.0,  fill:RED_LIGHT,  ink:RED_INK,   big:0, vol:"424k", lines:["Sent to the O2 app"], pct:"5.6% of 7.5M"},
-      left:    {x:588, w:204, y:325, h:40.0,  fill:AMBER,      ink:AMBER_INK, big:0, vol:"532k", lines:["Left before a queue"], pct:"7.1% of 7.5M"},
-      hours:   {x:588, w:204, y:395, h:40.0,  fill:AMBER,      ink:AMBER_INK, big:0, vol:"348k", lines:["Arrived out of hours"], pct:"4.6% of 7.5M"},
-      chatbot: {x:834, w:140, y:325, h:295.0, fill:GREEN,      ink:GREEN_INK, big:1, vol:"2.0M", lines:["Chatbot assisted"], pct:"26.7% of 7.5M"}
+      never:   {x:165, w:206, y:20,  h:133.0, fill:STEP_GREY,  ink:WHITE,     big:1, vol:"2M",   lines:["Never engaged","(no message sent)"], pct:"21.6% of 7.5M"},
+      triage:  {x:165, w:206, y:180, h:40.0,  fill:STEP_GREY,  ink:WHITE,     big:0, vol:"548k", lines:["Engaged, not past triage"], pct:"7.3% of 7.5M"},
+      engaged: {x:165, w:206, y:250, h:333.0, fill:PURPLE,     ink:WHITE,     big:1, vol:"5M",   lines:["Engaged with the","assistant"], pct:"66.6% of 7.5M"},
+      asked:   {x:416, w:150, y:210, h:257.5, fill:STEP_GREY,  ink:WHITE,     big:1, vol:"3.9M", lines:["Asked for an agent"], pct:"51.5% of 7.5M"},
+      noagent: {x:416, w:150, y:510, h:75.0,  fill:GREEN,      ink:GREEN_INK, big:1, vol:"1.1M", lines:["No agent requested"], pct:"15.0% of 7.5M"},
+      queue:   {x:611, w:180, y:30,  h:171.0, fill:RED,        ink:WHITE,     big:1, vol:"2.6M", lines:["Reached an agent queue"], pct:"34.2% of 7.5M"},
+      app:     {x:611, w:180, y:245, h:40.0,  fill:RED_LIGHT,  ink:RED_INK,   big:0, vol:"424k", lines:["Sent to the O2 app"], pct:"5.6% of 7.5M"},
+      left:    {x:611, w:180, y:325, h:40.0,  fill:AMBER,      ink:AMBER_INK, big:0, vol:"532k", lines:["Left before a queue"], pct:"7.1% of 7.5M"},
+      hours:   {x:611, w:180, y:395, h:40.0,  fill:AMBER,      ink:AMBER_INK, big:0, vol:"348k", lines:["Arrived out of hours"], pct:"4.6% of 7.5M"},
+      chatbot: {x:836, w:138, y:325, h:275.0, fill:GREEN,      ink:GREEN_INK, big:1, vol:"2M",   lines:["Chatbot assisted"], pct:"26.7% of 7.5M"}
     };
 
     /* Order matters: flows are stacked in the order listed, which keeps the
