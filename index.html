@@ -112,33 +112,6 @@
   .hero-foot + .hero-foot{margin-top:6px;}
   .lede.support{font-size:14px;margin-top:10px;}
 
-  /* Outcome funnel */
-  .funnel-wrap{display:flex;gap:30px;margin-top:22px;flex-wrap:wrap;}
-  .funnel{flex:1 1 460px;display:flex;flex-direction:column;gap:10px;min-width:300px;}
-  .f-bar{
-    display:flex;align-items:center;gap:10px;height:56px;
-    border-radius:6px;padding:0 16px;
-  }
-  .f-num{font-size:22px;font-weight:bold;letter-spacing:-0.01em;}
-  .f-txt{font-size:14px;font-weight:bold;}
-  .f-pct{font-size:13px;margin-left:auto;font-weight:bold;}
-  .f-callout{
-    flex:0 1 300px;align-self:flex-end;margin-bottom:6px;
-    border-left:3px solid #4D4D4D;padding-left:16px;
-    font-size:14px;color:var(--ink-2);
-  }
-  .f-callout b{color:var(--ink);}
-  .f-callout.primary{
-    border-left:4px solid var(--o2-blue);background:var(--page);
-    border-radius:0 10px 10px 0;padding:18px 20px;font-size:16px;color:var(--ink-2);
-  }
-  .f-callout.primary .fc-num{
-    display:block;font-size:34px;font-weight:bold;line-height:1.05;
-    color:var(--ink);margin-bottom:6px;letter-spacing:-0.01em;
-  }
-  .f-exits{margin-top:14px;font-size:13px;color:var(--ink-3);}
-  .f-exits b{color:var(--ink-2);}
-  .f-sub{font-size:12px;color:var(--ink-3);margin-top:6px;}
   .chart-note{
     border-left:3px solid var(--vm-red);padding-left:16px;margin-top:16px;
     font-size:14px;color:var(--ink-2);
@@ -379,32 +352,13 @@
     <p class="kicker">Outcome view</p>
     <h2>What actually happened to demand</h2>
     <p class="lede">Chatbot assisted says what the assistant handled on its own. This shows where conversations ended up.</p>
-    <div class="funnel-wrap">
-      <div class="funnel" role="img" aria-label="Four stage funnel as a share of 7.5M conversations started: 5.0M engaged with the assistant (66.6%), 3.9M asked for an agent (51.5%), 2.6M reached an agent (34.2%)">
-        <div class="f-bar" style="width:100%;background:#E4E4E4;color:#000000"
-          data-tip="<b>7.5M conversations started</b><br>100% of conversations started">
-          <span class="f-num">7.5M</span><span class="f-txt">conversations started</span><span class="f-pct">100%</span>
-        </div>
-        <div class="f-bar" style="width:66.6%;background:#C4C4C4;color:#000000"
-          data-tip="<b>5.0M engaged with the assistant</b><br>66.6% of the 7.5M started">
-          <span class="f-num">5.0M</span><span class="f-txt">engaged with the assistant</span><span class="f-pct">66.6%</span>
-        </div>
-        <div class="f-bar" style="width:51.5%;background:#8C8C8C;color:#000000"
-          data-tip="<b>3.9M asked for an agent</b><br>51.5% of the 7.5M started">
-          <span class="f-num">3.9M</span><span class="f-txt">asked for an agent</span><span class="f-pct">51.5%</span>
-        </div>
-        <div class="f-bar" style="width:34.2%;background:#4D4D4D;color:#FFFFFF"
-          data-tip="<b>2.6M reached an agent</b><br>34.2% of the 7.5M started">
-          <span class="f-num">2.6M</span><span class="f-txt">reached an agent</span><span class="f-pct">34.2%</span>
-        </div>
-        <p class="f-sub">Engaged means the customer sent at least one message. All percentages are of the 7.5M conversations started.</p>
-      </div>
-      <aside class="f-callout primary">
-        <p><span class="fc-num">424k</span> sent to the O2 app, <b>5.6%</b> of the 7.5M started. These are excluded from Chatbot assisted, so app deflection directly reduces the headline metric.</p>
-        <p class="f-exits"><b>348k</b> arrived out of hours (<b>4.6%</b>). <b>532k</b> left before reaching an agent (<b>7.1%</b>).</p>
-      </aside>
+    <div class="legend">
+      <span class="key"><span class="swatch box" style="background:#02D16A"></span>Handled without an agent</span>
+      <span class="key"><span class="swatch box" style="background:#FFC548"></span>Wanted an agent, did not reach one</span>
+      <span class="key"><span class="swatch box" style="background:#E10A0A"></span>Routed to an agent</span>
     </div>
-    <p class="sec-caption">Funnel figures cover all conversations, Jan to Jun, on the same engaged population as the Chatbot assisted figures above.</p>
+    <div class="chart" id="chart-flow"></div>
+    <p class="sec-caption">Chatbot assisted means the customer engaged with the assistant and was not transferred to an agent or sent to the O2 app. It includes customers who asked for an agent but left before reaching a queue, or arrived out of hours.</p>
   </section>
 
   <!-- 4. VM FAULTS CASE STUDY -->
@@ -741,6 +695,107 @@
       var tr = document.createElement("tr");
       tr.innerHTML = "<td>" + p[0] + "</td><td>" + pct1(p[1]) + "</td>";
       tb.appendChild(tr);
+    });
+  })();
+
+  /* ---------- Chart 3: demand flow ---------- */
+  (function(){
+    var W = 1100, H = 850;
+    var svg = el("svg", {viewBox:"0 0 " + W + " " + H, role:"img",
+      "aria-label":"Flow diagram of 7.5M conversations started. 2.5M never engaged and 5.0M engaged with the assistant. Of those engaged, 3.9M asked for an agent and 1.1M did not. Of those who asked, 2.6M reached an agent queue, 424k were sent to the O2 app, 532k left before reaching a queue and 348k arrived out of hours. 2.0M conversations were Chatbot assisted."});
+    document.getElementById("chart-flow").appendChild(svg);
+
+    var GREEN = "#02D16A", GREEN_INK = "#00301A";
+    var AMBER = "#FFC548", AMBER_INK = "#4A3300";
+    var RED_LIGHT = "#F5847F", RED_INK = "#4A0D0D";
+    var PLUM = "#6B2585", PURPLE = "#9B3FA8", STEP_GREY = "#6B6B6B";
+    var WHITE = "#FFFFFF";
+
+    /* Heights are proportional to volume, except Chatbot assisted, which is
+       enlarged because it is the headline metric. */
+    var N = {
+      started: {x:0,   w:135, y:120, h:675.0, fill:PLUM,       ink:WHITE,     big:1, vol:"7.5M", lines:["Conversations","started"]},
+      never:   {x:205, w:155, y:40,  h:225.5, fill:STEP_GREY,  ink:WHITE,     big:1, vol:"2.5M", lines:["Never engaged","(no message sent)"], pct:"33.4% of 7.5M"},
+      engaged: {x:205, w:155, y:330, h:449.5, fill:PURPLE,     ink:WHITE,     big:1, vol:"5.0M", lines:["Engaged with the","assistant"], pct:"66.6% of 7.5M"},
+      asked:   {x:430, w:155, y:300, h:347.6, fill:STEP_GREY,  ink:WHITE,     big:1, vol:"3.9M", lines:["Asked for an agent"], pct:"51.5% of 7.5M"},
+      noagent: {x:430, w:155, y:690, h:101.3, fill:GREEN,      ink:GREEN_INK, big:1, vol:"1.1M", lines:["No agent requested"], pct:"15.0% of 7.5M"},
+      queue:   {x:655, w:210, y:60,  h:230.9, fill:RED,        ink:WHITE,     big:1, vol:"2.6M", lines:["Reached an agent queue"], pct:"34.2% of 7.5M"},
+      app:     {x:655, w:210, y:340, h:37.8,  fill:RED_LIGHT,  ink:RED_INK,   big:0, vol:"424k", lines:["Sent to the O2 app"], pct:"5.6% of 7.5M"},
+      left:    {x:655, w:210, y:420, h:47.9,  fill:AMBER,      ink:AMBER_INK, big:0, vol:"532k", lines:["Left before reaching a queue"], pct:"7.1% of 7.5M"},
+      hours:   {x:655, w:210, y:500, h:31.1,  fill:AMBER,      ink:AMBER_INK, big:0, vol:"348k", lines:["Arrived out of hours"], pct:"4.6% of 7.5M"},
+      chatbot: {x:935, w:165, y:420, h:400.0, fill:GREEN,      ink:GREEN_INK, big:1, vol:"2.0M", lines:["Chatbot assisted"], pct:"26.7% of 7.5M"}
+    };
+
+    /* Order matters: flows are stacked in the order listed, which keeps the
+       ribbons from crossing one another. */
+    var FLOWS = [
+      {f:"started", t:"never",   w:33.4},
+      {f:"started", t:"engaged", w:66.6},
+      {f:"engaged", t:"asked",   w:51.5},
+      {f:"engaged", t:"noagent", w:15.0},
+      {f:"asked",   t:"queue",   w:34.2},
+      {f:"asked",   t:"app",     w:5.6},
+      {f:"asked",   t:"left",    w:7.1},
+      {f:"asked",   t:"hours",   w:4.6},
+      {f:"left",    t:"chatbot", w:7.1},
+      {f:"hours",   t:"chatbot", w:4.6},
+      {f:"noagent", t:"chatbot", w:15.0}
+    ];
+
+    /* Share each box edge out between its flows, so bands always fill it */
+    function bands(key, side){
+      var total = 0;
+      FLOWS.forEach(function(fl){ if (fl[side] === key) total += fl.w; });
+      var n = N[key], cursor = n.y;
+      FLOWS.forEach(function(fl){
+        if (fl[side] !== key) return;
+        var h = n.h * fl.w / total;
+        fl[side === "f" ? "sy0" : "dy0"] = cursor;
+        fl[side === "f" ? "sy1" : "dy1"] = cursor + h;
+        cursor += h;
+      });
+    }
+    Object.keys(N).forEach(function(k){ bands(k, "f"); bands(k, "t"); });
+
+    FLOWS.forEach(function(fl){
+      var a = N[fl.f], b = N[fl.t];
+      var x0 = a.x + a.w, x1 = b.x, cx = (x0 + x1) / 2;
+      var d = "M" + x0 + " " + fl.sy0 +
+        " C" + cx + " " + fl.sy0 + " " + cx + " " + fl.dy0 + " " + x1 + " " + fl.dy0 +
+        " L" + x1 + " " + fl.dy1 +
+        " C" + cx + " " + fl.dy1 + " " + cx + " " + fl.sy1 + " " + x0 + " " + fl.sy1 + " Z";
+      el("path", {d:d, fill:b.fill, opacity:0.34}, svg);
+    });
+
+    function tRaw(x, y, s, size, weight, fill){
+      var e = el("text", {x:x, y:y, "font-size":size, "font-weight":weight, fill:fill}, svg);
+      e.textContent = s;
+      return e;
+    }
+
+    Object.keys(N).forEach(function(k){
+      var n = N[k];
+      var r = el("rect", {x:n.x, y:n.y, width:n.w, height:n.h, rx:n.big ? 6 : 4, fill:n.fill}, svg);
+      r.setAttribute("data-tip", "<b>" + n.vol + " " + n.lines.join(" ") + "</b>" +
+        (n.pct ? "<br>" + n.pct : ""));
+
+      if (n.big) {
+        /* One block, vertically centred: volume, label lines, then percentage */
+        var blockH = 27 + n.lines.length * 16 + (n.pct ? 15 : 0);
+        var y = n.y + n.h / 2 - blockH / 2, x = n.x + 20;
+        tRaw(x, y + 21, n.vol, 26, "bold", n.ink);
+        y += 27;
+        n.lines.forEach(function(l){ tRaw(x, y + 12, l, 13, "normal", n.ink); y += 16; });
+        if (n.pct) tRaw(x, y + 11, n.pct, 12, "normal", n.ink);
+      } else {
+        var cy = n.y + n.h / 2, sx = n.x + 16;
+        var line = el("text", {x:sx, y:cy - 2, fill:n.ink}, svg);
+        var v = el("tspan", {"font-size":11, "font-weight":"bold"}, line);
+        v.textContent = n.vol;
+        var l = el("tspan", {"font-size":10, dx:5}, line);
+        l.textContent = n.lines[0];
+        tRaw(sx, cy + 10, n.pct, 10, "normal", n.ink);
+      }
     });
   })();
 
