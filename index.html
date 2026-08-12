@@ -700,7 +700,9 @@
 
   /* ---------- Chart 3: demand flow ---------- */
   (function(){
-    var W = 1100, H = 850;
+    /* Width matches the card's inner width at desktop, so the 13px floor on
+       type survives the viewBox scaling rather than rendering smaller. */
+    var W = 974, H = 635;
     var svg = el("svg", {viewBox:"0 0 " + W + " " + H, role:"img",
       "aria-label":"Flow diagram of 7.5M conversations started. 2.5M never engaged and 5.0M engaged with the assistant. Of those engaged, 3.9M asked for an agent and 1.1M did not. Of those who asked, 2.6M reached an agent queue, 424k were sent to the O2 app, 532k left before reaching a queue and 348k arrived out of hours. 2.0M conversations were Chatbot assisted."});
     document.getElementById("chart-flow").appendChild(svg);
@@ -711,19 +713,20 @@
     var PLUM = "#6B2585", PURPLE = "#9B3FA8", STEP_GREY = "#6B6B6B";
     var WHITE = "#FFFFFF";
 
-    /* Heights are proportional to volume, except Chatbot assisted, which is
-       enlarged because it is the headline metric. */
+    /* Heights run at 5px per percentage point, except the three thin boxes,
+       which are floored at 40px so their 13px text fits, and Chatbot
+       assisted, which is enlarged because it is the headline metric. */
     var N = {
-      started: {x:0,   w:135, y:120, h:675.0, fill:PLUM,       ink:WHITE,     big:1, vol:"7.5M", lines:["Conversations","started"]},
-      never:   {x:205, w:155, y:40,  h:225.5, fill:STEP_GREY,  ink:WHITE,     big:1, vol:"2.5M", lines:["Never engaged","(no message sent)"], pct:"33.4% of 7.5M"},
-      engaged: {x:205, w:155, y:330, h:449.5, fill:PURPLE,     ink:WHITE,     big:1, vol:"5.0M", lines:["Engaged with the","assistant"], pct:"66.6% of 7.5M"},
-      asked:   {x:430, w:155, y:300, h:347.6, fill:STEP_GREY,  ink:WHITE,     big:1, vol:"3.9M", lines:["Asked for an agent"], pct:"51.5% of 7.5M"},
-      noagent: {x:430, w:155, y:690, h:101.3, fill:GREEN,      ink:GREEN_INK, big:1, vol:"1.1M", lines:["No agent requested"], pct:"15.0% of 7.5M"},
-      queue:   {x:655, w:210, y:60,  h:230.9, fill:RED,        ink:WHITE,     big:1, vol:"2.6M", lines:["Reached an agent queue"], pct:"34.2% of 7.5M"},
-      app:     {x:655, w:210, y:340, h:37.8,  fill:RED_LIGHT,  ink:RED_INK,   big:0, vol:"424k", lines:["Sent to the O2 app"], pct:"5.6% of 7.5M"},
-      left:    {x:655, w:210, y:420, h:47.9,  fill:AMBER,      ink:AMBER_INK, big:0, vol:"532k", lines:["Left before reaching a queue"], pct:"7.1% of 7.5M"},
-      hours:   {x:655, w:210, y:500, h:31.1,  fill:AMBER,      ink:AMBER_INK, big:0, vol:"348k", lines:["Arrived out of hours"], pct:"4.6% of 7.5M"},
-      chatbot: {x:935, w:165, y:420, h:400.0, fill:GREEN,      ink:GREEN_INK, big:1, vol:"2.0M", lines:["Chatbot assisted"], pct:"26.7% of 7.5M"}
+      started: {x:0,   w:120, y:70,  h:500.0, fill:PLUM,       ink:WHITE,     big:1, vol:"7.5M", lines:["Conversations","started"]},
+      never:   {x:172, w:148, y:20,  h:167.0, fill:STEP_GREY,  ink:WHITE,     big:1, vol:"2.5M", lines:["Never engaged","(no message sent)"], pct:"33.4% of 7.5M"},
+      engaged: {x:172, w:148, y:230, h:333.0, fill:PURPLE,     ink:WHITE,     big:1, vol:"5.0M", lines:["Engaged with the","assistant"], pct:"66.6% of 7.5M"},
+      asked:   {x:372, w:154, y:210, h:257.5, fill:STEP_GREY,  ink:WHITE,     big:1, vol:"3.9M", lines:["Asked for an agent"], pct:"51.5% of 7.5M"},
+      noagent: {x:372, w:154, y:520, h:75.0,  fill:GREEN,      ink:GREEN_INK, big:1, vol:"1.1M", lines:["No agent requested"], pct:"15.0% of 7.5M"},
+      queue:   {x:578, w:204, y:30,  h:171.0, fill:RED,        ink:WHITE,     big:1, vol:"2.6M", lines:["Reached an agent queue"], pct:"34.2% of 7.5M"},
+      app:     {x:578, w:204, y:245, h:40.0,  fill:RED_LIGHT,  ink:RED_INK,   big:0, vol:"424k", lines:["Sent to the O2 app"], pct:"5.6% of 7.5M"},
+      left:    {x:578, w:204, y:325, h:40.0,  fill:AMBER,      ink:AMBER_INK, big:0, vol:"532k", lines:["Left before a queue"], pct:"7.1% of 7.5M"},
+      hours:   {x:578, w:204, y:395, h:40.0,  fill:AMBER,      ink:AMBER_INK, big:0, vol:"348k", lines:["Arrived out of hours"], pct:"4.6% of 7.5M"},
+      chatbot: {x:834, w:140, y:325, h:280.0, fill:GREEN,      ink:GREEN_INK, big:1, vol:"2.0M", lines:["Chatbot assisted"], pct:"26.7% of 7.5M"}
     };
 
     /* Order matters: flows are stacked in the order listed, which keeps the
@@ -781,20 +784,20 @@
 
       if (n.big) {
         /* One block, vertically centred: volume, label lines, then percentage */
-        var blockH = 27 + n.lines.length * 16 + (n.pct ? 15 : 0);
+        var blockH = 27 + n.lines.length * 16 + (n.pct ? 16 : 0);
         var y = n.y + n.h / 2 - blockH / 2, x = n.x + 20;
         tRaw(x, y + 21, n.vol, 26, "bold", n.ink);
         y += 27;
         n.lines.forEach(function(l){ tRaw(x, y + 12, l, 13, "normal", n.ink); y += 16; });
-        if (n.pct) tRaw(x, y + 11, n.pct, 12, "normal", n.ink);
+        if (n.pct) tRaw(x, y + 12, n.pct, 13, "normal", n.ink);
       } else {
         var cy = n.y + n.h / 2, sx = n.x + 16;
         var line = el("text", {x:sx, y:cy - 2, fill:n.ink}, svg);
-        var v = el("tspan", {"font-size":11, "font-weight":"bold"}, line);
+        var v = el("tspan", {"font-size":13, "font-weight":"bold"}, line);
         v.textContent = n.vol;
-        var l = el("tspan", {"font-size":10, dx:5}, line);
+        var l = el("tspan", {"font-size":13, dx:6}, line);
         l.textContent = n.lines[0];
-        tRaw(sx, cy + 10, n.pct, 10, "normal", n.ink);
+        tRaw(sx, cy + 14, n.pct, 13, "normal", n.ink);
       }
     });
   })();
