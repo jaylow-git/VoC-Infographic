@@ -54,15 +54,27 @@
   .lede strong{color:var(--ink);}
 
   /* Hero KPI band */
-  .hero-grid{display:grid;grid-template-columns:1.25fr 1fr 1fr;gap:16px;margin-top:20px;}
+  .hero-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:12px;}
   .tile{
     border:1px solid var(--hairline);border-radius:12px;padding:20px 20px 16px;
     display:flex;flex-direction:column;gap:6px;background:var(--surface);
   }
-  .tile.overall{background:var(--page);}
   .tile .t-label{font-size:14px;font-weight:bold;color:var(--ink-2);}
   .tile .t-value{font-size:56px;font-weight:bold;line-height:1;letter-spacing:-0.02em;}
-  .tile.overall .t-value{font-size:68px;}
+  .tile .t-of{font-size:13px;color:var(--ink-3);margin-top:-2px;}
+  .sub-head{font-size:18px;font-weight:bold;margin-top:24px;}
+
+  /* Key definition */
+  .defbox{
+    margin-top:18px;padding:18px 22px;background:var(--page);
+    border-left:4px solid var(--o2-blue);border-radius:0 10px 10px 0;
+  }
+  .defbox .def-title{
+    font-size:13px;font-weight:bold;letter-spacing:0.08em;text-transform:uppercase;
+    color:var(--ink-3);margin-bottom:6px;
+  }
+  .defbox p{font-size:16px;color:var(--ink-2);}
+  .defbox p b{color:var(--ink);}
   .t-value .pct{font-size:0.55em;font-weight:bold;}
   .tile .t-note{font-size:14px;color:var(--ink-2);}
   .tile .t-note b{color:var(--ink);}
@@ -219,17 +231,23 @@
       border:1px solid #ddd;border-radius:8px;padding:16px 18px;margin-bottom:12px;
       break-inside:avoid;page-break-inside:avoid;
     }
-    h1{font-size:26pt;}
+    header.masthead{padding:0 0 10px;}
+    h1{font-size:22pt;}
     h2{font-size:15pt;}
-    .tile .t-value{font-size:34pt;}
-    .tile.overall .t-value{font-size:40pt;}
-    .vol-band{padding:14px 18px;gap:20px;}
-    .vol-fig .v-num{font-size:24pt;}
+    .sub{font-size:12pt;}
+    .tile .t-value{font-size:28pt;}
+    .defbox{padding:10px 14px;}
+    .defbox p{font-size:11pt;}
+    .vol-band{padding:12px 16px;gap:12px;}
+    .vol-fig .v-num{font-size:22pt;}
+    .vb-group.opex{padding-top:12px;}
+    .spark svg{height:26px;}
+    .spark{padding-top:6px;}
     .fs .fs-num{font-size:22pt;}
     section.feature{page-break-before:always;}
     #sec-trust{page-break-before:always;}
     details.data,#tip{display:none !important;}
-    .hero-grid{grid-template-columns:1.25fr 1fr 1fr;}
+    .hero-grid{grid-template-columns:1fr 1fr;}
     .next-grid{grid-template-columns:1fr 1fr;}
     a{color:inherit;text-decoration:none;}
   }
@@ -247,7 +265,6 @@
   <!-- 1. HERO KPI BAND -->
   <section class="card" id="sec-hero">
     <p class="kicker">H1 headline</p>
-    <h2>VA Only: how much demand the assistant handled without an agent</h2>
     <div class="vol-band">
       <div class="vb-group">
         <div class="vol-fig">
@@ -257,7 +274,7 @@
         </div>
         <div class="v-of">of which</div>
         <div class="vol-fig">
-          <span class="v-top"><span class="v-num">2.0M</span><span class="v-word">VA Only</span></span>
+          <span class="v-top"><span class="v-num">2.0M</span><span class="v-word">Chatbot assisted</span></span>
           <span class="v-lab">40.2% of conversations</span>
           <span class="delta"><span class="arr down">&#9660;</span>1.5pts <span class="vs">vs H2 2025</span></span>
         </div>
@@ -269,7 +286,7 @@
       <div class="vb-group opex">
         <div class="vol-fig">
           <span class="v-top"><span class="v-num">&pound;6.9M</span><span class="v-word">OPEX saved</span></span>
-          <span class="v-lab">H1 2026, per VA Only conversation</span>
+          <span class="v-lab">H1 2026, per Chatbot assisted conversation</span>
           <span class="delta"><span class="arr down">&#9660;</span>10% <span class="vs">vs H2 2025</span></span>
         </div>
         <div class="vol-spark">
@@ -279,39 +296,38 @@
       </div>
     </div>
     <p class="lede support">Conversation volume fell <strong>6%</strong> against H2 2025, and OPEX savings fell <strong>10%</strong>.</p>
+    <div class="defbox">
+      <p class="def-title">What Chatbot assisted means</p>
+      <p>Customers who <b>engaged with the assistant</b>, sending at least one message, and were <b>not transferred to an agent or sent to the O2 app</b>.</p>
+    </div>
+    <p class="sub-head">Breakdown by brand</p>
     <div class="hero-grid">
-      <div class="tile overall">
-        <span class="t-label">Overall H1 VA Only</span>
-        <span class="t-value">40.2<span class="pct">%</span></span>
-        <span class="delta"><span class="arr down">&#9660;</span>1.5pts <span class="vs">vs H2 2025</span></span>
-        <span class="t-note"><b>Stable</b> across the half.</span>
-        <span class="t-vol"><b>2.0M</b> VA Only of <b>5.0M</b>, saving <b>&pound;6.9M</b></span>
-        <div class="spark" id="spark-total" aria-hidden="true"></div>
-      </div>
       <div class="tile">
         <span class="t-label"><span class="brandmark bm-o2"></span>O2</span>
         <span class="t-value">40.7<span class="pct">%</span></span>
+        <span class="t-of">of O2 conversations</span>
         <span class="delta"><span class="arr down">&#9660;</span>1.5pts <span class="vs">vs H2 2025</span></span>
         <span class="t-note"><b>Broadly stable</b>, strongest in March.</span>
-        <span class="t-vol"><b>908k</b> VA Only of <b>2.2M</b>, saving <b>&pound;3.6M</b></span>
+        <span class="t-vol"><b>908k</b> Chatbot assisted of <b>2.2M</b>, <b>&pound;3.6M</b> OPEX saved</span>
         <div class="spark" id="spark-o2" aria-hidden="true"></div>
       </div>
       <div class="tile">
         <span class="t-label"><span class="brandmark bm-vm"></span>Virgin Media</span>
         <span class="t-value">39.7<span class="pct">%</span></span>
+        <span class="t-of">of VM conversations</span>
         <span class="delta"><span class="arr down">&#9660;</span>1.5pts <span class="vs">vs H2 2025</span></span>
         <span class="t-note"><b>Stable</b> across the half.</span>
-        <span class="t-vol"><b>1.1M</b> VA Only of <b>2.8M</b>, saving <b>&pound;3.3M</b></span>
+        <span class="t-vol"><b>1.1M</b> Chatbot assisted of <b>2.8M</b>, <b>&pound;3.3M</b> OPEX saved</span>
         <div class="spark" id="spark-vm" aria-hidden="true"></div>
       </div>
     </div>
-    <p class="hero-foot">VA Only means customers who engaged with the assistant, sending at least one message, and were not transferred to an agent or sent to the O2 app. Triage leakage is excluded. OPEX savings are calculated per VA Only conversation. Comparison arrows show change versus H2 2025 (Jul to Dec).</p>
+    <p class="hero-foot">Triage leakage is excluded. OPEX savings are calculated per Chatbot assisted conversation. Comparison arrows show change versus H2 2025 (Jul to Dec).</p>
   </section>
 
   <!-- 2. MONTHLY TREND -->
   <section class="card" id="sec-monthly">
     <p class="kicker">Monthly trend</p>
-    <h2>VA Only by brand, January to June</h2>
+    <h2>Chatbot assisted by brand, January to June</h2>
     <p class="lede">O2 was broadly stable and strongest in <strong>March</strong>. Virgin Media held steady across the half, peaking in <strong>May</strong>.</p>
     <div class="legend">
       <span class="key"><span class="swatch" style="background:var(--o2-blue)"></span>O2</span>
@@ -322,7 +338,7 @@
     <details class="data">
       <summary>View data table</summary>
       <table>
-        <thead><tr><th>Month</th><th>O2 VA Only %</th><th>VM VA Only %</th><th>Total VA Only %</th></tr></thead>
+        <thead><tr><th>Month</th><th>O2 Chatbot assisted %</th><th>VM Chatbot assisted %</th><th>Total Chatbot assisted %</th></tr></thead>
         <tbody id="tbl-monthly"></tbody>
       </table>
     </details>
@@ -332,33 +348,33 @@
   <section class="card" id="sec-outcomes">
     <p class="kicker">Outcome view</p>
     <h2>What actually happened to demand</h2>
-    <p class="lede">VA Only says what the assistant handled on its own. This shows where conversations ended up.</p>
+    <p class="lede">Chatbot assisted says what the assistant handled on its own. This shows where conversations ended up.</p>
     <div class="funnel-wrap">
-      <div class="funnel" role="img" aria-label="Four stage funnel: 7.5M conversations started, 5.0M engaged with the assistant (66.6%), 3.9M asked for an agent (78.4% of engaged), 2.6M reached an agent (65.6% of those who asked)">
+      <div class="funnel" role="img" aria-label="Four stage funnel as a share of 7.5M conversations started: 5.0M engaged with the assistant (66.6%), 3.9M asked for an agent (51.5%), 2.6M reached an agent (34.2%)">
         <div class="f-bar" style="width:100%;background:#E4E4E4;color:#000000"
-          data-tip="<b>7.5M conversations started</b><br>All conversations, Jan to Jun">
-          <span class="f-num">7.5M</span><span class="f-txt">conversations started</span>
+          data-tip="<b>7.5M conversations started</b><br>100% of conversations started">
+          <span class="f-num">7.5M</span><span class="f-txt">conversations started</span><span class="f-pct">100%</span>
         </div>
-        <div class="f-bar" style="width:66.7%;background:#C4C4C4;color:#000000"
-          data-tip="<b>5.0M engaged with the assistant</b><br>66.6% of conversations started">
+        <div class="f-bar" style="width:66.6%;background:#C4C4C4;color:#000000"
+          data-tip="<b>5.0M engaged with the assistant</b><br>66.6% of the 7.5M started">
           <span class="f-num">5.0M</span><span class="f-txt">engaged with the assistant</span><span class="f-pct">66.6%</span>
         </div>
-        <div class="f-bar" style="width:52.0%;background:#8C8C8C;color:#000000"
-          data-tip="<b>3.9M asked for an agent</b><br>77.4% of engaged conversations">
-          <span class="f-num">3.9M</span><span class="f-txt">asked for an agent</span><span class="f-pct">77.4%</span>
+        <div class="f-bar" style="width:51.5%;background:#8C8C8C;color:#000000"
+          data-tip="<b>3.9M asked for an agent</b><br>51.5% of the 7.5M started">
+          <span class="f-num">3.9M</span><span class="f-txt">asked for an agent</span><span class="f-pct">51.5%</span>
         </div>
-        <div class="f-bar" style="width:34.7%;background:#4D4D4D;color:#FFFFFF"
-          data-tip="<b>2.6M reached an agent</b><br>66.3% of those who asked">
-          <span class="f-num">2.6M</span><span class="f-txt">reached an agent</span><span class="f-pct">66.3%</span>
+        <div class="f-bar" style="width:34.2%;background:#4D4D4D;color:#FFFFFF"
+          data-tip="<b>2.6M reached an agent</b><br>34.2% of the 7.5M started">
+          <span class="f-num">2.6M</span><span class="f-txt">reached an agent</span><span class="f-pct">34.2%</span>
         </div>
-        <p class="f-sub">Engaged means the customer sent at least one message. Stage percentages are of the stage above.</p>
+        <p class="f-sub">Engaged means the customer sent at least one message. All percentages are of the 7.5M conversations started.</p>
       </div>
       <aside class="f-callout primary">
-        <p><span class="fc-num">424k</span> sent to the O2 app. These are excluded from VA Only, so app deflection directly reduces the headline metric.</p>
-        <p class="f-exits"><b>348k</b> arrived out of hours. <b>532k</b> left before reaching an agent.</p>
+        <p><span class="fc-num">424k</span> sent to the O2 app, <b>5.6%</b> of the 7.5M started. These are excluded from Chatbot assisted, so app deflection directly reduces the headline metric.</p>
+        <p class="f-exits"><b>348k</b> arrived out of hours (<b>4.6%</b>). <b>532k</b> left before reaching an agent (<b>7.1%</b>).</p>
       </aside>
     </div>
-    <p class="sec-caption">Funnel figures cover all conversations, Jan to Jun, on the same engaged population as the VA Only figures above.</p>
+    <p class="sec-caption">Funnel figures cover all conversations, Jan to Jun, on the same engaged population as the Chatbot assisted figures above.</p>
   </section>
 
   <!-- 4. VM FAULTS CASE STUDY -->
@@ -394,18 +410,18 @@
     <p class="kicker">Demand drivers</p>
     <h2>Why customers contacted us</h2>
     <p class="lede">Top three reasons per brand, H1 2026. Requests to speak to an agent directly are excluded.</p>
-    <p class="lede support">Bar length is total conversations. The solid segment is VA Only.</p>
+    <p class="lede support">Bar length is total conversations. The solid segment is Chatbot assisted.</p>
     <div class="legend">
-      <span class="key"><span class="swatch box" style="background:#E10A0A"></span>Virgin Media VA Only</span>
+      <span class="key"><span class="swatch box" style="background:#E10A0A"></span>Virgin Media Chatbot assisted</span>
       <span class="key"><span class="swatch box" style="background:#F5B8B8"></span>Virgin Media passed to an agent or app</span>
-      <span class="key"><span class="swatch box" style="background:#0050FF"></span>O2 VA Only</span>
+      <span class="key"><span class="swatch box" style="background:#0050FF"></span>O2 Chatbot assisted</span>
       <span class="key"><span class="swatch box" style="background:#B3C7FF"></span>O2 passed to an agent or app</span>
     </div>
     <div class="chart" id="chart-reasons"></div>
     <details class="data">
       <summary>View data table</summary>
       <table>
-        <thead><tr><th>Reason</th><th>Brand</th><th>Total</th><th>VA Only</th><th>VA Only %</th><th>OPEX saved</th></tr></thead>
+        <thead><tr><th>Reason</th><th>Brand</th><th>Total</th><th>Chatbot assisted</th><th>Chatbot assisted %</th><th>OPEX saved</th></tr></thead>
         <tbody id="tbl-reasons"></tbody>
       </table>
     </details>
@@ -446,12 +462,12 @@
       <div class="next">
         <div class="n-chip" style="background:var(--vm-red)">2</div>
         <h3>Target retentions demand</h3>
-        <p>Target retentions demand. Cancellations and retentions is our biggest reason for contact at <b>788k conversations</b>, and only <b>31.5%</b> are VA Only. Journey redesign here moves the overall number.</p>
+        <p>Target retentions demand. Cancellations and retentions is our biggest reason for contact at <b>788k conversations</b>, and only <b>31.5%</b> are Chatbot assisted. Journey redesign here moves the overall number.</p>
       </div>
       <div class="next">
         <div class="n-chip" style="background:var(--ink)">3</div>
         <h3>Close the fallback gap</h3>
-        <p>Close the fallback gap. Around <b>44k fallback contacts</b> needed an agent in June. Expanding NLU coverage for unrecognised queries is a quick VA Only win.</p>
+        <p>Close the fallback gap. Around <b>44k fallback contacts</b> needed an agent in June. Expanding NLU coverage for unrecognised queries is a quick Chatbot assisted win.</p>
       </div>
       <div class="next">
         <div class="n-chip" style="background:var(--o2-blue)">4</div>
@@ -557,7 +573,6 @@
   }
   spark("spark-o2", O2_MONTHLY, BLUE);
   spark("spark-vm", VM_MONTHLY, RED);
-  spark("spark-total", TOTAL_MONTHLY, INK3);
   spark("spark-vol", VOL_SPARK, INK3);
   spark("spark-opex", OPEX_SPARK, INK3);
 
@@ -567,7 +582,7 @@
     var m = {l:46, r:110, t:18, b:34};
     var y0 = 34, y1 = 45;
     var svg = el("svg", {viewBox:"0 0 " + W + " " + H, role:"img",
-      "aria-label":"Line chart of monthly VA Only rate, January to June 2026: O2, Virgin Media and total"});
+      "aria-label":"Line chart of monthly Chatbot assisted rate, January to June 2026: O2, Virgin Media and total"});
     document.getElementById("chart-monthly").appendChild(svg);
 
     function X(i){ return m.l + i * (W - m.l - m.r) / (MONTHS.length - 1); }
@@ -704,7 +719,7 @@
   /* ---------- Chart 4: reasons for contact, stacked bars ---------- */
   (function(){
     var W = 1000;
-    var m = {l:230, r:215, t:8, b:36};
+    var m = {l:230, r:252, t:8, b:36};
     var plot = W - m.l - m.r;
     var scaleMax = 800000;
     var barH = 24, rowPitch = 52, headH = 34;
@@ -715,7 +730,7 @@
     var H = m.t + groups.length * (headH + 3 * rowPitch) + m.b;
 
     var svg = el("svg", {viewBox:"0 0 " + W + " " + H, role:"img",
-      "aria-label":"Stacked bars of the top three reasons for contact per brand, showing VA Only volume within total conversations"});
+      "aria-label":"Stacked bars of the top three reasons for contact per brand, showing Chatbot assisted volume within total conversations"});
     document.getElementById("chart-reasons").appendChild(svg);
 
     function X(v){ return m.l + (v / scaleMax) * plot; }
@@ -749,8 +764,8 @@
         var pC = el("path", {d:seg(m.l, by, wC, barH, true, false), fill:g.fill}, svg);
         var pR = el("path", {d:seg(m.l + wC + 2, by, wT - wC - 2, barH, false, true), fill:g.tint}, svg);
 
-        var tipC = "<b>" + d.name + "</b><br>" + fmt(d.vaOnly) + " VA Only of " +
-          fmt(d.total) + "<br>" + pct1(d.pct) + "% VA Only, " + d.opex + " saved";
+        var tipC = "<b>" + d.name + "</b><br>" + fmt(d.vaOnly) + " Chatbot assisted of " +
+          fmt(d.total) + "<br>" + pct1(d.pct) + "% Chatbot assisted, " + d.opex + " saved";
         bindTip(pC, tipC); bindTip(pR, tipC);
 
         /* Name wraps to two lines when it is too wide for the label column */
@@ -767,7 +782,7 @@
 
         /* Label sits outside the bar end, where it never clips */
         txt(svg, X(d.total) + 12, cy + 5,
-          pct1(d.pct) + "% VA Only, " + d.opex + " saved", "dlab", "start");
+          pct1(d.pct) + "% Chatbot assisted, " + d.opex + " saved", "dlab", "start");
         y += rowPitch;
       });
     });
