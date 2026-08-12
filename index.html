@@ -60,11 +60,14 @@
     display:flex;flex-direction:column;gap:6px;background:var(--surface);
   }
   .tile .t-label{font-size:14px;font-weight:bold;color:var(--ink-2);}
-  .t-figs{display:flex;flex-direction:column;align-items:flex-start;gap:3px;margin-top:6px;}
-  .t-figs .v-of{margin:2px 0;}
+  .t-figs{display:flex;flex-direction:column;align-items:flex-start;gap:4px;margin-top:6px;}
   .tile .vol-fig .v-num{font-size:30px;}
   .tile .vol-fig .v-word{font-size:15px;}
-  .tile .v-of{font-size:15px;}
+  /* Connector sits on its own line between the two figures */
+  .t-figs .v-of{
+    display:block;font-size:13px;font-weight:normal;color:var(--ink-3);
+    margin:1px 0;
+  }
   .t-opex{border-top:1px solid var(--hairline);padding-top:12px;margin-top:4px;}
   .tile .t-opex .v-num{font-size:26px;}
   .sub-head{font-size:18px;font-weight:bold;margin-top:24px;}
@@ -326,7 +329,6 @@
             <span class="v-top"><span class="v-num">&pound;3.6M</span><span class="v-word">OPEX saved</span></span>
           </div>
         </div>
-        <div class="spark" id="spark-o2" aria-hidden="true"></div>
       </div>
       <div class="tile">
         <span class="t-label"><span class="brandmark bm-vm"></span>Virgin Media</span>
@@ -347,7 +349,6 @@
             <span class="v-top"><span class="v-num">&pound;3.3M</span><span class="v-word">OPEX saved</span></span>
           </div>
         </div>
-        <div class="spark" id="spark-vm" aria-hidden="true"></div>
       </div>
     </div>
     <p class="hero-foot">Triage leakage is excluded. OPEX savings are calculated per Chatbot assisted conversation. Comparison arrows show change versus H2 2025 (Jul to Dec).</p>
@@ -600,8 +601,6 @@
       fill:color, stroke:"#FFFFFF", "stroke-width":2}, svg);
     box.appendChild(svg);
   }
-  spark("spark-o2", O2_MONTHLY, BLUE);
-  spark("spark-vm", VM_MONTHLY, RED);
   spark("spark-vol", VOL_SPARK, INK3);
   spark("spark-opex", OPEX_SPARK, INK3);
 
