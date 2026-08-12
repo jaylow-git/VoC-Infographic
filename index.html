@@ -60,8 +60,13 @@
     display:flex;flex-direction:column;gap:6px;background:var(--surface);
   }
   .tile .t-label{font-size:14px;font-weight:bold;color:var(--ink-2);}
-  .tile .t-value{font-size:56px;font-weight:bold;line-height:1;letter-spacing:-0.02em;}
-  .tile .t-of{font-size:13px;color:var(--ink-3);margin-top:-2px;}
+  .t-figs{display:flex;flex-direction:column;align-items:flex-start;gap:3px;margin-top:6px;}
+  .t-figs .v-of{margin:2px 0;}
+  .tile .vol-fig .v-num{font-size:30px;}
+  .tile .vol-fig .v-word{font-size:15px;}
+  .tile .v-of{font-size:15px;}
+  .t-opex{border-top:1px solid var(--hairline);padding-top:12px;margin-top:4px;}
+  .tile .t-opex .v-num{font-size:26px;}
   .sub-head{font-size:18px;font-weight:bold;margin-top:24px;}
 
   /* Key definition */
@@ -75,11 +80,8 @@
   }
   .defbox p{font-size:16px;color:var(--ink-2);}
   .defbox p b{color:var(--ink);}
-  .t-value .pct{font-size:0.55em;font-weight:bold;}
   .tile .t-note{font-size:14px;color:var(--ink-2);}
   .tile .t-note b{color:var(--ink);}
-  .tile .t-vol{font-size:13px;color:var(--ink-3);}
-  .tile .t-vol b{color:var(--ink-2);}
 
   /* Hero volume band */
   .vol-band{
@@ -231,18 +233,21 @@
       border:1px solid #ddd;border-radius:8px;padding:16px 18px;margin-bottom:12px;
       break-inside:avoid;page-break-inside:avoid;
     }
-    header.masthead{padding:0 0 10px;}
-    h1{font-size:22pt;}
+    header.masthead{padding:0 0 6px;}
+    h1{font-size:20pt;}
     h2{font-size:15pt;}
     .sub{font-size:12pt;}
-    .tile .t-value{font-size:28pt;}
+    .tile .vol-fig .v-num{font-size:18pt;}
+    .tile .t-opex .v-num{font-size:15pt;}
     .defbox{padding:10px 14px;}
     .defbox p{font-size:11pt;}
     .vol-band{padding:12px 16px;gap:12px;}
     .vol-fig .v-num{font-size:22pt;}
     .vb-group.opex{padding-top:12px;}
-    .spark svg{height:26px;}
+    .spark svg{height:22px;}
     .spark{padding-top:6px;}
+    .t-opex{padding-top:10px;}
+    .sub-head{margin-top:16px;}
     .fs .fs-num{font-size:22pt;}
     section.feature{page-break-before:always;}
     #sec-trust{page-break-before:always;}
@@ -304,20 +309,44 @@
     <div class="hero-grid">
       <div class="tile">
         <span class="t-label"><span class="brandmark bm-o2"></span>O2</span>
-        <span class="t-value">40.7<span class="pct">%</span></span>
-        <span class="t-of">of O2 conversations</span>
-        <span class="delta"><span class="arr down">&#9660;</span>1.5pts <span class="vs">vs H2 2025</span></span>
+        <div class="t-figs">
+          <div class="vol-fig">
+            <span class="v-top"><span class="v-num">2.2M</span><span class="v-word">conversations</span></span>
+          </div>
+          <div class="v-of">of which</div>
+          <div class="vol-fig">
+            <span class="v-top"><span class="v-num">908k</span><span class="v-word">Chatbot assisted</span></span>
+            <span class="v-lab">40.7% of O2 conversations</span>
+            <span class="delta"><span class="arr down">&#9660;</span>1.5pts <span class="vs">vs H2 2025</span></span>
+          </div>
+        </div>
         <span class="t-note"><b>Broadly stable</b>, strongest in March.</span>
-        <span class="t-vol"><b>908k</b> Chatbot assisted of <b>2.2M</b>, <b>&pound;3.6M</b> OPEX saved</span>
+        <div class="t-opex">
+          <div class="vol-fig">
+            <span class="v-top"><span class="v-num">&pound;3.6M</span><span class="v-word">OPEX saved</span></span>
+          </div>
+        </div>
         <div class="spark" id="spark-o2" aria-hidden="true"></div>
       </div>
       <div class="tile">
         <span class="t-label"><span class="brandmark bm-vm"></span>Virgin Media</span>
-        <span class="t-value">39.7<span class="pct">%</span></span>
-        <span class="t-of">of VM conversations</span>
-        <span class="delta"><span class="arr down">&#9660;</span>1.5pts <span class="vs">vs H2 2025</span></span>
+        <div class="t-figs">
+          <div class="vol-fig">
+            <span class="v-top"><span class="v-num">2.8M</span><span class="v-word">conversations</span></span>
+          </div>
+          <div class="v-of">of which</div>
+          <div class="vol-fig">
+            <span class="v-top"><span class="v-num">1.1M</span><span class="v-word">Chatbot assisted</span></span>
+            <span class="v-lab">39.7% of VM conversations</span>
+            <span class="delta"><span class="arr down">&#9660;</span>1.5pts <span class="vs">vs H2 2025</span></span>
+          </div>
+        </div>
         <span class="t-note"><b>Stable</b> across the half.</span>
-        <span class="t-vol"><b>1.1M</b> Chatbot assisted of <b>2.8M</b>, <b>&pound;3.3M</b> OPEX saved</span>
+        <div class="t-opex">
+          <div class="vol-fig">
+            <span class="v-top"><span class="v-num">&pound;3.3M</span><span class="v-word">OPEX saved</span></span>
+          </div>
+        </div>
         <div class="spark" id="spark-vm" aria-hidden="true"></div>
       </div>
     </div>
